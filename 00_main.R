@@ -69,21 +69,21 @@ get_data <- function(x) {
   import(file = x, which = 1) %>% 
     # Cleaning
     rename(
+      row = 1,
       bien = 2,
       medida = 3,
       cantidad = 4,
       precio = 5,
       total = 6
     ) %>% 
-    select(2:6) %>% 
     filter(
-      !is.na(medida),
+      !is.na(row),
       !is.na(bien),
       !str_detect(bien, "Descrip")
     ) %>% 
     mutate(
       across(
-        c(3:5),
+        c(4:6),
         ~ str_trim(.x) %>% 
           as.numeric(.x) 
       )
@@ -101,6 +101,11 @@ df <- files %>%
   ) %>% 
   unnest(
     data
+  ) %>% 
+  mutate(
+    bien = str_replace_all(bien, "/ ", "/"),
+    bien = str_replace_all(bien, "Brassiers", "Brassier"),
+    bien = str_replace_all(bien, "Pastas dental", "Pasta dental")
   )
 
 write.csv(
