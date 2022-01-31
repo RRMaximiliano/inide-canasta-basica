@@ -1,0 +1,53 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(tidyverse)
+
+canasta_basica <- read_rds("data/CB_FULL.rds")
+```
+
+# Canasta Básica de Nicaragua
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Este repositorio contiene todos los datos disponibles de la canasta básica de Nicaragua desde septiembre del año 2007 a diciembre del año 2021. Los datos se encuentran en la subcaprta `data` y también están disponibles por cada mes en la subcarpeta `data/monthly`. 
+
+```{r}
+canasta_basica
+```
+
+Cada base de datos contiene las siguientes variables:
+
+* `yymm`: Año - Mes de la canasta básica.
+* `year`: Año.
+* `month`: Mes.
+* `url`: URL de descarga de la página oficial del INIDE.
+* `row`: ID del bien. En total se encuentran 53 bienes.
+* `bien`: Nombre del bien.
+* `medida`: Medida oficial de consumo.
+* `cantidad`: Cantidad de consumo (en medida).
+* `precio`: Precio por medida.
+* `total`: Total de consumo.
+
+La base de datos mantiene los nombres originales de cada bien que es incluído en la canasta básica. Por ejemplo, para los años 2007 al 2009, se mantuvo el nombre de "Pescado" y fue cambiado por "Chuleta de Pescado" en los años siguients. Me queda limpiar estas discrepancias.
+
+## Ejemplos
+
+```{r, echo = FALSE}
+knitr::include_graphics("figures/arroz.png")
+knitr::include_graphics("figures/queso_seco.png")
+```
+
+## Comentarios y sugerencias
+
+Para realizar comentarios o sugerencias sobre la base de datos puedes escribirme a rodriguezramirez@worldbank.org o abrir un issue en este repositorio: <https://github.com/RRMaximiliano/inide-canasta-basica/issues>
