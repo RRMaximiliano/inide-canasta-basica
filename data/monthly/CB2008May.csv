@@ -1,54 +1,54 @@
-"yymm","year","month","url","row","bien","medida","cantidad","precio","total"
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","1","Arroz","Libra",38,8.57,325.73
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","2","Frijol","Libra",34,13.94,474.05
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","3","Azúcar","Libra",30,5.24,157.12
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","4","Aceite","Litro",7,40.06,280.42
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","5","Posta de res","Libra",8,36.75,294
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","6","Posta de cerdo","Libra",5,34.69,173.45
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","7","Carne de aves","Libra",8,21.61,172.87
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","8","Pescado","Libra",9,39.03,351.25
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","9","Leche fluída","Litro",30,14,420
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","10","Huevos","Docena",7,26.92,188.42
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","11","Queso seco","Libra",9,33.58,302.19
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","12","Tortilla","Libra",57,9.12,519.76
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","13","Pinolillo","Libra",10,18.5,185.05
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","14","Pastas alimenticias","Libra",5,16.29,81.47
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","15","Pan","Libra",27,16.89,456.05
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","16","Tomate de cocinar","Libra",14,12.25,171.56
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","17","Cebolla blanca","Libra",8,8.95,71.64
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","18","Papas","Libra",15,9.81,147.1
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","19","Ayote","Libra",32,3.62,115.97
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","20","Chiltoma","Libra",3,14.33,43
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","21","Plátano verde","Libra",16,4.02,64.34
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","22","Naranja","Libra",46,3.87,178.24
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","23","Repollo","Libra",2,2.83,5.67
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","24","Jabón de lavar","Unidad",12.55,7.96,99.92
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","25","Detergente","Bolsita de 40 gramos ",27.97,1.56,43.54
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","26","Pastas dental","Unidad de 115 grs ",2.13,22,46.86
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","27","Fósforos","Cajita de 40 cerrillos",10.87,0.93,10.06
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","28","Escoba","Unidad",1.22,28.35,34.59
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","29","Papel higiénico","Rollos",10.71,5.64,60.4
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","30","Jabón de baño","Unidad",4.67,3.6,16.82
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,9.67,21.38
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","32","Desodorantes nacional","Unidad",1.9,15.4,29.27
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","33","Cepillo dental","Unidad",2.49,8.08,20.13
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","34","Alquiler","Valor (C$) mensual",1,900,900
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","35","Gas butano"," 25 libras",1,260.69,260.69
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","36","Luz eléctrica","KWH",100,1.94,193.94
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","37","Agua","Galones",5292,0.02,82.5
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","38","Transporte","Pasaje",240,2.5,600
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","39","Pantalón largo de tela de jeans","Unidad",0.62,180.45,111.88
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","40","Camisa manga corta","Unidad",0.66,60.72,40.08
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","41","Calzoncillos","Unidad",1.57,15.1,23.71
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","42","Calcetines","Par",1.32,14.8,19.53
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","43","Zapato  de cuero natural (mocasin, acordonado,cerrado. Etc.)","Par",0.43,226.02,97.19
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","44","Blusa manga corta","Unidad",0.66,46.71,30.83
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","45","Pantalón largo de tela de jeans","Unidad",0.51,187.67,95.71
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","46","Vestido entero","Unidad",0.5,99.56,49.78
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","47","Calzones/ Bikinis","Unidad",1.23,14.84,18.26
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","48","Brassiers/ sostén","Unidad",0.97,18.32,17.77
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","49","Sandalias de cuero sintético","Par",0.44,122.48,53.89
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","50","Traje completo","Unidad",0.5,137.81,68.9
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","51","Calzones","Unidad",1.43,11.93,17.05
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","52","Calcetines","Par",1.39,12.75,17.73
-"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","53","Zapato de cuero sintético","Par",0.45,153.45,69.05
+"yymm","year","month","url","row","bien","medida","cantidad","precio","total","id"
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","1","Arroz","Libra",38,8.5719,325.7322,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","2","Frijol","Libra",34,13.94279328,474.05497152,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","3","AzÃºcar","Libra",30,5.23717468,157.1152404,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","4","Aceite","Litro",7,40.05966957,280.41768699,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","5","Posta de res","Libra",8,36.75005512,294.00044096,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","6","Posta de cerdo","Libra",5,34.68900798,173.4450399,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","7","Carne de aves","Libra",8,21.60840015,172.8672012,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","8","Pescado","Libra",9,39.02731154,351.24580386,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","9","Leche fluÃ­da","Litro",30,14,420,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","10","Huevos","Docena",7,26.9169022,188.4183154,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","11","Queso seco","Libra",9,33.57646901,302.18822109,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","12","Tortilla","Libra",57,9.11855193,519.75746001,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","13","Pinolillo","Libra",10,18.50482992,185.0482992,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","14","Pastas alimenticias","Libra",5,16.29385459,81.46927295,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","15","Pan","Libra",27,16.89072797,456.04965519,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","16","Tomate de cocinar","Libra",14,12.25410113,171.55741582,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","17","Cebolla blanca","Libra",8,8.95480898,71.63847184,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","18","Papas","Libra",15,9.80658756,147.0988134,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","19","Ayote","Libra",32,3.62398920414102,115.967654532513,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","20","Chiltoma","Libra",3,14.33280124,42.99840372,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","21","PlÃ¡tano verde","Libra",16,4.02119324,64.33909184,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","22","Naranja","Libra",46,3.87486434,178.24375964,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","23","Repollo","Libra",2,2.83279818,5.66559636,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","24","JabÃ³n de lavar","Unidad",12.55,7.96148069,99.9165826595,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","25","Detergente","Bolsita de 40 gramos",27.97,1.55681632,43.5441524704,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","26","Pastas dental","Unidad de 115 grs",2.13,22.0002,46.860426,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","27","FÃ³sforos","Cajita de 40 cerrillos",10.87,0.92542017,10.0593172479,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","28","Escoba","Unidad",1.22,28.3502,34.587244,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","29","Papel higiÃ©nico","Rollos",10.71,5.63957775,60.3998777025,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","30","JabÃ³n de baÃ±o","Unidad",4.67,3.6007944,16.815709848,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,9.67251177,21.3762510117,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","32","Desodorantes nacional","Unidad",1.9,15.4046468,29.26882892,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","33","Cepillo dental","Unidad",2.49,8.0833,20.127417,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","34","Alquiler","Valor (C$) mensual",1,900,900,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","35","Gas butano","25 libras",1,260.69021851,260.69021851,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","36","Luz elÃ©ctrica","KWH",100,1.939394,193.9394,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","37","Agua","Galones",5292,0.01559,82.50228,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","38","Transporte","Pasaje",240,2.5,600,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","39","PantalÃ³n largo de tela de jeans","Unidad",0.62,180.45161775,111.880003005,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","40","Camisa manga corta","Unidad",0.66,60.7236698,40.077622068,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","41","Calzoncillos","Unidad",1.57,15.102,23.71014,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","42","Calcetines","Par",1.32,14.7968,19.531776,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","43","Zapato  de cuero natural (mocasin, acordonado,cerrado. Etc.)","Par",0.43,226.01635534,97.1870327962,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","44","Blusa manga corta","Unidad",0.66,46.71096382,30.8292361212,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","45","PantalÃ³n largo de tela de jeans","Unidad",0.51,187.66719512,95.7102695112,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","46","Vestido entero","Unidad",0.5,99.559936,49.779968,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","47","Calzones/ Bikinis","Unidad",1.23,14.8415,18.255045,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","48","Brassiers/ sostÃ©n","Unidad",0.97,18.3154,17.765938,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","49","Sandalias de cuero sintÃ©tico","Par",0.44,122.48358042,53.8927753848,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","50","Traje completo","Unidad",0.5,137.80901594,68.90450797,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","51","Calzones","Unidad",1.43,11.92542509,17.0533578787,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","52","Calcetines","Par",1.39,12.75397064,17.7280191896,9
+"CB2008May",2008,"May","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2008/CMayo08.xls","53","Zapato de cuero sintÃ©tico","Par",0.45,153.44780487,69.0515121915,9

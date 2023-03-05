@@ -1,54 +1,54 @@
-"yymm","year","month","url","row","bien","medida","cantidad","precio","total"
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","1","Arroz","Libra",38,12.78,485.64
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","2","Frijol","Libra",34,16.26,552.84
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","3","Azúcar","Libra",30,11.15,334.5
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","4","Aceite","Litro",7,35.68,249.76
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","5","Posta de res","Libra",8,85.4,683.2
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","6","Posta de cerdo","Libra",5,65.95,329.75
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","7","Carne de aves","Libra",8,44.08,352.64
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","8","Chuleta de pescado","Libra",9,79.3,713.7
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","9","Leche","Litro",30,27.36,820.8
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","10","Huevos","Docena",7,55.35,387.45
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","11","Queso seco","Libra",9,74.9,674.1
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","12","Tortilla","Libra",57,15.54,885.78
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","13","Pinolillo","Libra",10,27.15,271.5
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","14","Pastas alimenticias","Libra",5,25.66,128.3
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","15","Pan","Libra",27,20.92,564.84
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","16","Tomate de cocinar","Libra",14,12.83,179.62
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","17","Cebolla blanca","Libra",8,24.43,195.44
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","18","Papas","Libra",15,24.13,361.95
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","19","Ayote","Libra",32,6.07,194.24
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","20","Chiltoma","Libra",3,34.02,102.06
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","21","Plátano verde","Libra",16,10.42,166.72
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","22","Naranja","Libra",46,6.11,281.06
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","23","Repollo","Libra",2,8.12,16.24
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","24","Jabón de lavar ropa","Unidad",12.55,12.54,157.38
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","25","Detergente en polvo","Bolsita de 40 gramos ",27.97,2.93,81.95
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","26","Pasta dental","Unidad de 115 grs ",2.13,29.35,62.52
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","27","Fósforos","Cajita de 40 cerillos",10.87,1.17,12.72
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","28","Escoba","Unidad",1.22,44.17,53.89
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","29","Papel higiénico","Rollos",10.71,11.26,120.59
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","30","Jabón de baño","Unidad",4.67,6.66,31.1
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,16.77,37.06
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","32","Desodorante nacional","Unidad",1.9,27.5,52.25
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","33","Cepillo dental","Unidad",2.49,11.41,28.41
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","34","Alquiler","Valor (C$) mensual",1,900,900
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","35","Gas butano"," 25 libras",1,315.75,315.75
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","36","Luz eléctrica","KWH",100,2.75,274.75
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","37","Agua","Galones",5292,0.03,145.29
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","38","Transporte","Pasaje",240,2.5,600
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","39","Pantalón largo de tela de jeans","Unidad",0.62,439.75,273.21
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","40","Camisa manga corta","Unidad",0.66,120.17,79.31
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","41","Calzoncillos","Unidad",1.57,39.5,61.82
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","42","Calcetines","Par",1.32,27.6,36.43
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","43","Zapato  de cuero natural (mocasin, acordonado, cerrado, etc.)","Par",0.43,408.29,176.47
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","44","Blusa manga corta","Unidad",0.66,108.74,71.77
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","45","Pantalón largo de tela de jeans","Unidad",0.51,407.2,207.67
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","46","Vestido entero","Unidad",0.5,270.18,135.09
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","47","Calzones/ Bikinis","Unidad",1.23,38.37,47.2
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","48","Brassier/ sostén","Unidad",0.97,43.51,42.2
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","49","Sandalias de cuero sintético","Par",0.44,228.83,100.69
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","50","Traje completo","Unidad",0.5,285.6,143.36
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","51","Calzones","Unidad",1.43,27.09,38.81
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","52","Calcetines","Par",1.39,27.61,38.33
-"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","53","Zapato de cuero sintético","Par",0.45,310.31,138.75
+"yymm","year","month","url","row","bien","medida","cantidad","precio","total","id"
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","1","Arroz","Libra",38,12.78,485.64,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","2","Frijol","Libra",34,16.26,552.84,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","3","AzÃºcar","Libra",30,11.15,334.5,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","4","Aceite","Litro",7,35.68,249.76,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","5","Posta de res","Libra",8,85.4,683.2,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","6","Posta de cerdo","Libra",5,65.95,329.75,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","7","Carne de aves","Libra",8,44.08,352.64,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","8","Chuleta de pescado","Libra",9,79.3,713.7,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","9","Leche","Litro",30,27.36,820.8,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","10","Huevos","Docena",7,55.35,387.45,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","11","Queso seco","Libra",9,74.9,674.1,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","12","Tortilla","Libra",57,15.54,885.78,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","13","Pinolillo","Libra",10,27.15,271.5,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","14","Pastas alimenticias","Libra",5,25.66,128.3,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","15","Pan","Libra",27,20.92,564.84,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","16","Tomate de cocinar","Libra",14,12.83,179.62,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","17","Cebolla blanca","Libra",8,24.43,195.44,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","18","Papas","Libra",15,24.13,361.95,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","19","Ayote","Libra",32,6.07,194.24,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","20","Chiltoma","Libra",3,34.02,102.06,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","21","PlÃ¡tano verde","Libra",16,10.42,166.72,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","22","Naranja","Libra",46,6.11,281.06,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","23","Repollo","Libra",2,8.12,16.24,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","24","JabÃ³n de lavar ropa","Unidad",12.55,12.54,157.377,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","25","Detergente en polvo","Bolsita de 40 gramos",27.97,2.93,81.9521,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","26","Pasta dental","Unidad de 115 grs",2.13,29.35,62.5155,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","27","FÃ³sforos","Cajita de 40 cerillos",10.87,1.17,12.7179,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","28","Escoba","Unidad",1.22,44.17,53.8874,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","29","Papel higiÃ©nico","Rollos",10.71,11.26,120.5946,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","30","JabÃ³n de baÃ±o","Unidad",4.67,6.66,31.1022,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,16.77,37.0617,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","32","Desodorante nacional","Unidad",1.9,27.5,52.25,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","33","Cepillo dental","Unidad",2.49,11.41,28.4109,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","34","Alquiler","Valor (C$) mensual",1,900,900,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","35","Gas butano","25 libras",1,315.75,315.75,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","36","Luz elÃ©ctrica","KWH",100,2.74746125,274.746125,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","37","Agua","Galones",5292,0.027454941052381,145.2915480492,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","38","Transporte","Pasaje",240,2.5,600,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","39","PantalÃ³n largo de tela de jeans","Unidad",0.621290101151897,439.75,273.212321981547,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","40","Camisa manga corta","Unidad",0.660003700679698,120.17,79.3126447106794,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","41","Calzoncillos","Unidad",1.56501893310219,39.5,61.8182478575365,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","42","Calcetines","Par",1.3198798072969,27.6,36.4286826813946,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","43","Zapato  de cuero natural (mocasin, acordonado, cerrado, etc.)","Par",0.432211303669415,408.29,176.467553175185,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","44","Blusa manga corta","Unidad",0.66,108.74,71.7684,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","45","PantalÃ³n largo de tela de jeans","Unidad",0.51,407.2,207.672,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","46","Vestido entero","Unidad",0.5,270.18,135.09,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","47","Calzones/ Bikinis","Unidad",1.23,38.37,47.1951,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","48","Brassier/ sostÃ©n","Unidad",0.97,43.51,42.2047,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","49","Sandalias de cuero sintÃ©tico","Par",0.44,228.83,100.6852,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","50","Traje completo","Unidad",0.501964507835002,285.6,143.361063437677,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","51","Calzones","Unidad",1.4326365541172,27.09,38.810124251035,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","52","Calcetines","Par",1.38828467371139,27.61,38.3305398411714,125
+"CB2018Ene",2018,"Ene","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2018/CBEne2018.xls","53","Zapato de cuero sintÃ©tico","Par",0.44713223086502,310.31,138.749602559724,125

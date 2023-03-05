@@ -1,12 +1,12 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata)
+pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, stringi)
 
 # Scrape data -------------------------------------------------------------
 
-yy    = rep(2007:2021, each = 12)
-mm    = rep(c("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"), 15) %>% 
+yy    = rep(2007:2023, each = 12)
+mm    = rep(c("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"), 17) %>% 
   as_factor()
 
 
@@ -161,7 +161,17 @@ files = data.frame(month = mm, year = yy) %>%
       month == "Nov" & year == 2010 ~ str_replace(url, "Nov","nov"),
       month == "Dic" & year == 2010 ~ str_replace(url, "Dic","dic"),
       TRUE ~ url
-    )
+    ),
+    ## 2022
+    url = case_when(
+      month == "Jun" & year == 2022 ~ str_replace(url, "Jun","Junio"),
+      month == "Jul" & year == 2022 ~ str_replace(url, "Jul","Julio"),
+      TRUE ~ url
+    ),
+    id = row_number(),
+    url = ifelse(id >= 178, str_replace_all(url, ".xls", ".xlsx"), url)
   ) 
 
+files <- files %>% 
+  filter(id <= 185)
 

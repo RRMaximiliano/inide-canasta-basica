@@ -1,54 +1,54 @@
-"yymm","year","month","url","row","bien","medida","cantidad","precio","total"
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","1","Arroz","Libra",38,10.73,407.74
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","2","Frijol","Libra",34,9.21,313.14
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","3","Azúcar","Libra",30,8.7,261
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","4","Aceite","Litro",7,34.06,238.42
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","5","Posta de res","Libra",8,56,448
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","6","Posta de cerdo","Libra",5,53.29,266.45
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","7","Carne de aves","Libra",8,29.67,237.36
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","8","Chuleta de pescado","Libra",9,58.74,528.66
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","9","Leche","Litro",30,21.55,646.5
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","10","Huevos","Docena",7,39.94,279.58
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","11","Queso seco","Libra",9,51.6,464.4
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","12","Tortilla","Libra",57,12.69,723.33
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","13","Pinolillo","Libra",10,21.23,212.3
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","14","Pastas alimenticias","Libra",5,20.38,101.9
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","15","Pan","Libra",27,19.77,533.79
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","16","Tomate de cocinar","Libra",14,14.08,197.12
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","17","Cebolla blanca","Libra",8,25.1,200.8
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","18","Papas","Libra",15,13.95,209.25
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","19","Ayote","Libra",32,6.14,196.48
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","20","Chiltoma","Libra",3,35.72,107.16
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","21","Plátano verde","Libra",16,7.61,121.76
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","22","Naranja","Libra",46,5.5,253
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","23","Repollo","Libra",2,5.64,11.28
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","24","Jabón de lavar ropa","Unidad",12.55,12.79,160.51
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","25","Detergente en polvo","Bolsita de 40 gramos ",27.97,2.17,60.69
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","26","Pastas dental","Unidad de 115 grs ",2.13,28.25,60.17
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","27","Fósforos","Cajita de 40 cerrillos",10.87,0.99,10.76
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","28","Escoba","Unidad",1.22,37.39,45.62
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","29","Papel higiénico","Rollos",10.71,10.75,115.13
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","30","Jabón de baño","Unidad",4.67,5.75,26.85
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,14.22,31.43
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","32","Desodorante nacional","Unidad",1.9,20.8,39.52
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","33","Cepillo dental","Unidad",2.49,9.89,24.63
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","34","Alquiler","Valor (C$) mensual",1,900,900
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","35","Gas butano"," 25 libras",1,252.64,252.64
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","36","Luz eléctrica","KWH",100,2.47,246.99
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","37","Agua","Galones",5292,0.02,82.5
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","38","Transporte","Pasaje",240,2.5,600
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","39","Pantalón largo de tela de jeans","Unidad",0.62,316.3,196.51
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","40","Camisa manga corta","Unidad",0.66,101.93,67.27
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","41","Calzoncillos","Unidad",1.57,31.09,48.66
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","42","Calcetines","Par",1.32,23.49,31
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","43","Zapato  de cuero natural (mocasin, acordonado, cerrado, etc.)","Par",0.43,328.37,141.93
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","44","Blusa manga corta","Unidad",0.66,85.01,56.11
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","45","Pantalón largo de tela de jeans","Unidad",0.51,297.12,151.53
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","46","Vestido entero","Unidad",0.5,222.7,111.35
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","47","Calzones/ Bikinis","Unidad",1.23,28.66,35.25
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","48","Brassiers/ sostén","Unidad",0.97,32.31,31.34
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","49","Sandalias de cuero sintético","Par",0.44,199.17,87.63
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","50","Traje completo","Unidad",0.5,228.94,114.92
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","51","Calzones","Unidad",1.43,20.26,29.03
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","52","Calcetines","Par",1.39,19.92,27.65
-"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","53","Zapato de cuero sintético","Par",0.45,260.27,116.38
+"yymm","year","month","url","row","bien","medida","cantidad","precio","total","id"
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","1","Arroz","Libra",38,10.73,407.74,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","2","Frijol","Libra",34,9.21,313.14,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","3","AzÃºcar","Libra",30,8.7,261,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","4","Aceite","Litro",7,34.06,238.42,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","5","Posta de res","Libra",8,56,448,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","6","Posta de cerdo","Libra",5,53.29,266.45,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","7","Carne de aves","Libra",8,29.67,237.36,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","8","Chuleta de pescado","Libra",9,58.74,528.66,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","9","Leche","Litro",30,21.55,646.5,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","10","Huevos","Docena",7,39.94,279.58,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","11","Queso seco","Libra",9,51.6,464.4,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","12","Tortilla","Libra",57,12.69,723.33,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","13","Pinolillo","Libra",10,21.23,212.3,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","14","Pastas alimenticias","Libra",5,20.38,101.9,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","15","Pan","Libra",27,19.77,533.79,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","16","Tomate de cocinar","Libra",14,14.08,197.12,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","17","Cebolla blanca","Libra",8,25.1,200.8,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","18","Papas","Libra",15,13.95,209.25,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","19","Ayote","Libra",32,6.14,196.48,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","20","Chiltoma","Libra",3,35.72,107.16,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","21","PlÃ¡tano verde","Libra",16,7.61,121.76,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","22","Naranja","Libra",46,5.5,253,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","23","Repollo","Libra",2,5.64,11.28,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","24","JabÃ³n de lavar ropa","Unidad",12.55,12.79,160.5145,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","25","Detergente en polvo","Bolsita de 40 gramos",27.97,2.17,60.6949,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","26","Pastas dental","Unidad de 115 grs",2.13,28.25,60.1725,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","27","FÃ³sforos","Cajita de 40 cerrillos",10.87,0.99,10.7613,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","28","Escoba","Unidad",1.22,37.39,45.6158,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","29","Papel higiÃ©nico","Rollos",10.71,10.75,115.1325,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","30","JabÃ³n de baÃ±o","Unidad",4.67,5.75,26.8525,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","31","Toallas sanitarias","Bolsa de 10 unid",2.21,14.22,31.4262,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","32","Desodorante nacional","Unidad",1.9,20.8,39.52,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","33","Cepillo dental","Unidad",2.49,9.89,24.6261,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","34","Alquiler","Valor (C$) mensual",1,900,900,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","35","Gas butano","25 libras",1,252.636423849633,252.636423849633,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","36","Luz elÃ©ctrica","KWH",100,2.46986025,246.986025,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","37","Agua","Galones",5292,0.015590373999093,82.5042592032,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","38","Transporte","Pasaje",240,2.5,600,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","39","PantalÃ³n largo de tela de jeans","Unidad",0.621290101151897,316.3,196.514058994345,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","40","Camisa manga corta","Unidad",0.660003700679698,101.93,67.2741772102817,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","41","Calzoncillos","Unidad",1.56501893310219,31.09,48.6564386301471,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","42","Calcetines","Par",1.3198798072969,23.49,31.0039766734043,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","43","Zapato  de cuero natural (mocasin, acordonado, cerrado, etc.)","Par",0.432211303669415,328.37,141.925225785926,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","44","Blusa manga corta","Unidad",0.66,85.01,56.1066,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","45","PantalÃ³n largo de tela de jeans","Unidad",0.51,297.12,151.5312,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","46","Vestido entero","Unidad",0.5,222.7,111.35,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","47","Calzones/ Bikinis","Unidad",1.23,28.66,35.2518,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","48","Brassiers/ sostÃ©n","Unidad",0.97,32.31,31.3407,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","49","Sandalias de cuero sintÃ©tico","Par",0.44,199.17,87.6348,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","50","Traje completo","Unidad",0.501964507835002,228.94,114.919754423745,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","51","Calzones","Unidad",1.4326365541172,20.26,29.0252165864145,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","52","Calcetines","Par",1.38828467371139,19.92,27.6546307003309,68
+"CB2013Abr",2013,"Abr","https://www.inide.gob.ni/docs/CanastaB/canastab/CB2013/CAbr2013.xls","53","Zapato de cuero sintÃ©tico","Par",0.44713223086502,260.27,116.375105727239,68

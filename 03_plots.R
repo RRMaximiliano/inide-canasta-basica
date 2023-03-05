@@ -1,7 +1,7 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, hrbrthemes)
+pacman::p_load(tidyverse, janitor, lubridate, hrbrthemes, glue)
 
 # Get data ----------------------------------------------------------------
 
@@ -43,7 +43,6 @@ ggsave(
 
 # Queso -------------------------------------------------------------------
 
-
 df %>% 
   filter(bien == "Queso seco") %>% 
   mutate(
@@ -74,3 +73,48 @@ ggsave(
   scale = 0.8,
   bg = "white"
 )
+
+# All products ------------------------------------------------------------
+
+df %>%
+  mutate(
+    bien = ifelse(str_detect(bien, "Brassier"), "Brassiers / Sostén", bien),
+    bien = ifelse(str_detect(bien, "Desodorante"), "Desodorante", bien),
+    bien = ifelse(str_detect(bien, "pescado|Pescado"), "Chuleta de Pescado", bien),
+    bien = ifelse(str_detect(bien, "Leche"), "Leche", bien),
+    bien = ifelse(str_detect(bien, "Detergente"), "Detergente", bien),
+    bien = ifelse(str_detect(bien, "Jabón de lavar"), "Jabón de lavar", bien),
+    bien = ifelse(str_detect(bien, "Pastas dental"), "Pasta dental", bien),
+    bien = ifelse(str_detect(bien, "cuero natural"), "Zapato de cuero natural", bien),
+    bien = ifelse(row == 39, glue("{bien} (Hombres y Niños)"), bien),
+    bien = ifelse(row == 45, glue("{bien} (Mujeres y Niñas)"), bien),
+    bien = ifelse(row == 42, glue("{bien} (> 10 años)"), bien),
+    bien = ifelse(row == 52, glue("{bien} (< 10 años)"), bien)
+  ) %>% 
+  # group_by(bien) %>%  
+  mutate(
+    ym = paste0(year, "-",as.numeric(month)),
+    ym = ym(ym)
+  ) %>% 
+  group_by(bien) %>% 
+  mutate(
+    pct = (total - lag(total)) / lag(total)
+  ) %>% 
+  arrange(bien, ym) %>%
+  ggplot(
+    aes(
+      x = ym,
+      y = precio,
+      group = bien
+    )
+  ) +
+  geom_line() +
+  facet_wrap(~ bien, scales = "free_y") + 
+  theme_ipsum_rc() +
+  labs(
+    x = "",
+    y = "Precio en Córdobas",
+    title = "Precio nominal de todos los 53 bienes de la la Canasta Básica de Nicaragua",
+    subtitle = "Sep 2007 - Dic 2021",
+    caption = "Fuente: INIDE | Plot: @rrmaximiliano"
+  )

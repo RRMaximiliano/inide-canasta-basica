@@ -1,7 +1,7 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, haven)
+pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, haven, readxl)
 
 # To list -----------------------------------------------------------------
 
@@ -15,11 +15,11 @@ list <- files %>%
 get_data <- function(url) {
   url.name   <- str_replace_all(url, ".*/", "")
   url.string <- as.character(url)
-  temp_xls   <- tempfile(fileext = "xls")
+  temp_xls   <- tempfile()
   
   download.file(url.string, destfile = temp_xls, mode = "wb")
   
-  temp <- read.xls(temp_xls) %>% 
+  temp <- read_excel(temp_xls) %>% 
     mutate(
       url = as.character(url)
     ) %>% 
@@ -57,7 +57,6 @@ get_data <- function(url) {
 # Get data ----------------------------------------------------------------
 
 dfs <- map_dfr(list, get_data)
-
 
 # Getting month and year labels -------------------------------------------
 
