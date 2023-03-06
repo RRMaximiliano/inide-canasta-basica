@@ -1,0 +1,14 @@
+name: inide-canasta-basica
+title: inide-canasta-basica
+username:
+account: rrmaximiliano
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8481508
+bundleId: 6918192
+url: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
+when: 1678038362.87807
+lastSyncTime: 1678038362.87809
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 01_files.R|02_scrape.R|03_plots.R|figures/arroz.png|figures/queso_seco.png|LICENSE.md|README.md|README.Rmd
