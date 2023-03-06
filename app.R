@@ -4,6 +4,7 @@ library(tidyverse)
 library(ggplot2)
 library(hrbrthemes)
 library(bslib)
+library(scales)
 library(DT)
 
 # Get Data ----------------------------------------------------------------
@@ -54,6 +55,11 @@ data <- read_rds("data/CB_FULL.rds") %>%
     )
   )
 
+grouped_data <- data %>% 
+  group_by(year, month) %>% 
+  summarize(
+    sum = sum(total)
+  ) 
 
 # UI ----------------------------------------------------------------------
 
@@ -83,8 +89,19 @@ ui <- fluidPage(
         "Descargar la tabla como csv")
     ),
     mainPanel(
-      plotOutput("plotBien"),
-      dataTableOutput("tableBien")
+      tabsetPanel(
+        type = "tabs",
+        tabPanel(
+          "Por Bien",
+          plotOutput("plotBien"),
+          dataTableOutput("tableBien")
+        ),
+        tabPanel(
+          "Canasta Agrupada Por Mes",
+          plotOutput("plotCanasta"),
+          dataTableOutput("tableCanasta")
+        )
+      )
     )
   )
 )
@@ -174,6 +191,55 @@ server <- function(input, output, session) {
       write.csv(filtered_data(), file)
     }
   )
+  
+  
+  # Output por canasta
+  output$plotCanasta <- renderPlot({
+    plot <- grouped_data %>% 
+      mutate(
+        ym = paste0(year, "-",as.numeric(month)),
+        ym = ym(ym)
+      ) %>% 
+      ggplot(
+        aes(
+          x = ym,
+          y = sum
+        )
+      ) +
+      geom_line() +
+      labs(
+        x = "",
+        y = "Precio en Córdobas",
+        title = "Precio nominal total de la canasta básica",
+        caption = "Fuente: INIDE | Plot: @rrmaximiliano"
+      ) +
+      scale_y_continuous(labels = comma) +
+      theme_ipsum_rc() +
+      theme(
+        axis.text.x = element_text(size = 16),
+        axis.text.y = element_text(size = 16),
+        axis.title = element_text(size = 18, face = "bold"),
+        plot.title = element_text(size = 20, face = "bold"),
+        plot.subtitle = element_text(size = 18),
+        plot.caption = element_text(size = 14)
+      )
+    plot
+  })
+  
+  # Table por canasta
+  output$tableCanasta <- renderDataTable({
+    grouped_data %>% 
+      rename(total = sum) %>% 
+      DT::datatable(
+        options = list(
+          dom = 'Bfrtip',
+          buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+        ),
+        rownames = FALSE, 
+        class = "table-striped"
+      ) %>% 
+      formatRound(columns = c("total"), digits = 1)
+  })
 }
 
 # Run the app

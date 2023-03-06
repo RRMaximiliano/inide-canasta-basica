@@ -5,10 +5,10 @@ account: rrmaximiliano
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8481508
-bundleId: 6919090
+bundleId: 6919135
 url: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
-when: 1678065967.46168
-lastSyncTime: 1678065967.46168
+when: 1678067018.0139
+lastSyncTime: 1678067018.01391
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: 01_files.R|02_scrape.R|03_plots.R|figures/arroz.png|figures/queso_seco.png|LICENSE.md|README.md|README.Rmd
