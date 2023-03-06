@@ -1,14 +1,12 @@
-# Packages ----------------------------------------------------------------
 
-library(bs4Dash)
-library(DT)
+library(shiny)
 library(tidyverse)
+library(ggplot2)
 library(hrbrthemes)
-library(shinyWidgets)
-library(stringr)
-library(shinydashboardPlus)
+library(bslib)
+library(DT)
 
-# Get data ----------------------------------------------------------------
+# Get Data ----------------------------------------------------------------
 
 data <- read_rds("data/CB_FULL.rds") %>% 
   rename(good = bien) %>% 
@@ -47,46 +45,67 @@ data <- read_rds("data/CB_FULL.rds") %>%
       good == "Pantalón largo de tela de jeans" & rowid == 45 ~ "Pantalón largo de tela de jeans (Mujeres)",
       TRUE ~ good
     )
-  ) 
-
-# ui ----------------------------------------------------------------------
-
-ui <- dashboardPage(
-  skin = "green",
-  dashboardHeader(title = "Canasta Básica de Nicaragua", titleWidth = 400),
-  dashboardSidebar(
-    width = 400,
-    selectInput(
-      "good", 
-      "Choose a good:",
-      choices = sort(unique(data$good)),
-      selected = "Queso seco"
+  ) %>% 
+  mutate(
+    medida = str_to_lower(medida),
+    precio = case_when(
+      is.na(precio) & good == "Alquiler" ~ total, 
+      TRUE ~ precio
     )
+  )
+
+
+# UI ----------------------------------------------------------------------
+
+# Define UI
+ui <- fluidPage(
+  theme = bs_theme(
+    version = 5, bootswatch = "minty",
+    heading_font = font_google("Fira Sans"),
+    base_font = font_google("Fira Sans"),
+    code_font = font_google("Fira Code")
   ),
-  dashboardBody(
-    fluidRow(
+  titlePanel(
+    "Canasta Básica de Nicaragua"
+  ),
+  sidebarLayout(
+    position = "right",
+    fluid = FALSE,
+    sidebarPanel(
+      selectInput(
+        "good", 
+        "Selecciona un bien de la canasta:", 
+        choices = sort(unique(data$good)),
+        selected = "Queso seco"
+      ),
+      downloadButton(
+        "download1", 
+        "Descargar la tabla como csv")
+    ),
+    mainPanel(
       plotOutput("plotBien"),
       dataTableOutput("tableBien")
     )
   )
 )
 
-# server ------------------------------------------------------------------
+# Server ------------------------------------------------------------------
 
-server <- function(input, output) {
-  
+# Define server
+server <- function(input, output, session) {
   # Subset the data based on the user's input
   filtered_data <- reactive({
     data %>%
       filter(
         good == input$good
       ) 
-  })
+  }) %>% 
+    bindCache(input$good)
   
   # Output the plot
   output$plotBien <- renderPlot({
     title_lab <- sprintf(
-      "Precio nominal de %s de %s según la canasta básica de Nicaragua",
+      "Precio nominal de %s de %s",
       unique(filtered_data()$medida),
       input$good
     )
@@ -129,23 +148,33 @@ server <- function(input, output) {
     plot 
   })
   
-  # Output the table
-  output$tableBien <- DT::renderDataTable({
-    filtered_data() %>%
+  # Display the filtered data as a table
+  output$tableBien <- renderDataTable({
+    filtered_data() %>% 
+      arrange(desc(ym)) %>% 
       select(year, month, good, medida, cantidad, precio, total) %>%
-      arrange(year, month) %>% 
+      # arrange(year, month) %>% 
       DT::datatable(
         options = list(
           dom = 'Bfrtip',
           buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
         ),
+        rownames = FALSE, 
         class = "table-striped"
-      )
+      ) %>% 
+      formatRound(columns=c("precio", "total"), digits = 1)
   })
+  
+  # Descargar
+  output$download1 <- downloadHandler(
+    filename = function() {
+      paste0("inide_canasta_basica_", input$good, "_", Sys.Date(), ".csv")
+    },
+    content = function(file) {
+      write.csv(filtered_data(), file)
+    }
+  )
 }
 
-
-# Run app -----------------------------------------------------------------
-
-shinyApp(ui = ui, server = server)
-
+# Run the app
+shinyApp(ui, server)
