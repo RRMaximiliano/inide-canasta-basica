@@ -179,7 +179,7 @@ server <- function(input, output, session) {
         rownames = FALSE, 
         class = "table-striped"
       ) %>% 
-      formatRound(columns=c("precio", "total"), digits = 1)
+      formatRound(columns=c("precio", "total"), digits = 3)
   })
   
   # Descargar

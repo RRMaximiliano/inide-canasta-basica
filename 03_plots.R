@@ -118,3 +118,48 @@ df %>%
     subtitle = "Sep 2007 - Dic 2021",
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   )
+
+
+# Total -------------------------------------------------------------------
+
+df %>% 
+  group_by(year, month) %>% 
+  summarize(
+    sum = sum(total)
+  ) %>% 
+  mutate(
+    ym = paste0(year, "-",as.numeric(month)),
+    ym = ym(ym)
+  ) %>% 
+  ggplot(
+    aes(
+      x = ym,
+      y = sum
+    )
+  ) +
+  geom_line() +
+  labs(
+    x = "",
+    y = "Precio en Córdobas",
+    title = "Precio nominal total de la canasta básica",
+    caption = "Fuente: INIDE | Plot: @rrmaximiliano"
+  ) +
+  scale_y_continuous(labels = comma) +
+  theme_ipsum_rc() +
+  theme(
+    axis.text.x = element_text(size = 16),
+    axis.text.y = element_text(size = 16),
+    axis.title = element_text(size = 18, face = "bold"),
+    plot.title = element_text(size = 20, face = "bold"),
+    plot.subtitle = element_text(size = 18),
+    plot.caption = element_text(size = 14)
+  )
+
+ggsave(
+  "figures/canasta_basica.png",
+  dpi = 320,
+  height = 8,
+  width = 12,
+  scale = 0.8,
+  bg = "white"
+)

@@ -44,6 +44,7 @@ La base de datos mantiene los nombres originales de cada bien que es incluído e
 ## Ejemplos
 
 ```{r, echo = FALSE}
+knitr::include_graphics("figures/canasta_basica.png")
 knitr::include_graphics("figures/arroz.png")
 knitr::include_graphics("figures/queso_seco.png")
 ```

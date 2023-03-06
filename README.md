@@ -49,7 +49,7 @@ Pescado” en los años siguients. Me queda limpiar estas discrepancias.
 
 ## Ejemplos
 
-<img src="figures/arroz.png" width="3072" /><img src="figures/queso_seco.png" width="3072" />
+<img src="figures/canasta_basica.png" width="3072" /><img src="figures/arroz.png" width="3072" /><img src="figures/queso_seco.png" width="3072" />
 
 ## Comentarios y sugerencias
 
