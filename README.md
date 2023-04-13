@@ -13,20 +13,20 @@ disponibles por cada mes en la subcarpeta `data/monthly`.
 
 ``` r
 canasta_basica
-#> # A tibble: 9,805 × 11
-#>    yymm       year month url       row   bien  medida canti…¹ precio total    id
-#>    <glue>    <int> <fct> <chr>     <chr> <chr> <chr>    <dbl>  <dbl> <dbl> <int>
-#>  1 CB2007Sep  2007 Sep   https://… 1     Arroz Libra       38   6.09  231.     1
-#>  2 CB2007Sep  2007 Sep   https://… 2     Frij… Libra       34  10.4   355.     1
-#>  3 CB2007Sep  2007 Sep   https://… 3     Azúc… Libra       30   4.83  145.     1
-#>  4 CB2007Sep  2007 Sep   https://… 4     Acei… Litro        7  24.1   169.     1
-#>  5 CB2007Sep  2007 Sep   https://… 5     Post… Libra        8  32.9   263.     1
-#>  6 CB2007Sep  2007 Sep   https://… 6     Post… Libra        5  30.0   150.     1
-#>  7 CB2007Sep  2007 Sep   https://… 7     Carn… Libra        8  17.0   136.     1
-#>  8 CB2007Sep  2007 Sep   https://… 8     Pesc… Libra        9  35.6   320.     1
-#>  9 CB2007Sep  2007 Sep   https://… 9     Lech… Litro       30  10.5   315      1
-#> 10 CB2007Sep  2007 Sep   https://… 10    Huev… Docena       7  21.4   150.     1
-#> # … with 9,795 more rows, and abbreviated variable name ¹​cantidad
+#> # A tibble: 9,858 × 11
+#>    yymm       year month url      row   bien  medida cantidad precio total    id
+#>    <glue>    <int> <fct> <chr>    <chr> <chr> <chr>     <dbl>  <dbl> <dbl> <int>
+#>  1 CB2007Sep  2007 Sep   https:/… 1     Arroz Libra        38   6.09  231.     1
+#>  2 CB2007Sep  2007 Sep   https:/… 2     Frij… Libra        34  10.4   355.     1
+#>  3 CB2007Sep  2007 Sep   https:/… 3     Azúc… Libra        30   4.83  145.     1
+#>  4 CB2007Sep  2007 Sep   https:/… 4     Acei… Litro         7  24.1   169.     1
+#>  5 CB2007Sep  2007 Sep   https:/… 5     Post… Libra         8  32.9   263.     1
+#>  6 CB2007Sep  2007 Sep   https:/… 6     Post… Libra         5  30.0   150.     1
+#>  7 CB2007Sep  2007 Sep   https:/… 7     Carn… Libra         8  17.0   136.     1
+#>  8 CB2007Sep  2007 Sep   https:/… 8     Pesc… Libra         9  35.6   320.     1
+#>  9 CB2007Sep  2007 Sep   https:/… 9     Lech… Litro        30  10.5   315      1
+#> 10 CB2007Sep  2007 Sep   https:/… 10    Huev… Docena        7  21.4   150.     1
+#> # ℹ 9,848 more rows
 ```
 
 Cada base de datos contiene las siguientes variables:

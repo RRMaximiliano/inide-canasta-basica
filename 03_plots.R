@@ -144,7 +144,7 @@ df %>%
     title = "Precio nominal total de la canasta básica",
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   ) +
-  scale_y_continuous(labels = comma) +
+  scale_y_continuous(labels = scales::comma) +
   theme_ipsum_rc() +
   theme(
     axis.text.x = element_text(size = 16),

@@ -86,7 +86,14 @@ ui <- fluidPage(
       ),
       downloadButton(
         "download1", 
-        "Descargar la tabla como csv")
+        "Descargar la tabla como csv"
+      ),
+      p(""),
+      strong("Aspectos clave de la Canasta Básica:"),
+      p(""),
+      p("En Nicaragua, la Canasta Básica se compone de tres categorías principales: alimentos, uso doméstico y vestimenta. Se originó en 1988 a raíz de una sugerencia de la Secretaría de Planificación y Presupuesto (SPP) y se basó en datos recopilados en la Encuesta de Ingresos y Gastos de los hogares 1984-85."),
+      p("La versión actualizada en 2005 proporciona un total de 2,455 calorías diarias por persona y está diseñada para satisfacer las necesidades energéticas de seis personas con un nivel moderado de actividad física."),
+      p("La cobertura de esta canasta está restringida al área urbana de la ciudad de Managua.")
     ),
     mainPanel(
       tabsetPanel(
