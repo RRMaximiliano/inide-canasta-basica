@@ -20,7 +20,7 @@ canasta_basica <- read_rds("data/CB_FULL.rds")
 <!-- badges: start -->
 <!-- badges: end -->
 
-Este repositorio contiene todos los datos disponibles de la canasta básica de Nicaragua desde septiembre del año 2007 a diciembre del año 2021. Los datos se encuentran en la subcaprta `data` y también están disponibles por cada mes en la subcarpeta `data/monthly`. 
+Este repositorio contiene todos los datos disponibles de la canasta básica de Nicaragua desde septiembre del año 2007 a junio del año 2023. Los datos se encuentran en la subcaprta `data` y también están disponibles por cada mes en la subcarpeta `data/monthly`. 
 
 ```{r}
 canasta_basica

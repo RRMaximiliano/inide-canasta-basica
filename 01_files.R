@@ -173,5 +173,14 @@ files = data.frame(month = mm, year = yy) %>%
   ) 
 
 files <- files %>% 
-  filter(id <= 186)
+  filter(id <= 190)
 
+files <- files %>% 
+  mutate(
+    url = case_when(
+      month == "Jun" & year == "2023" ~ str_replace(url, "CBJun2023", "CB_Jun2023"),
+      month == "May" & year == "2023" ~ str_replace(url, "CBMay2023", "CBMayo2023"),
+      month == "Mar" & year == "2023" ~ str_replace(url, "CBMar2023", "CBMarzo2023"),
+      TRUE ~ url
+    )
+  )

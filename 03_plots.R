@@ -27,7 +27,7 @@ df %>%
     x = "",
     y = "Precio en Córdobas",
     title = "Precio nominal de la libra de Arroz según la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Dic 2021",
+    subtitle = "Sep 2007 - Jun 2023",
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   )
 
@@ -61,7 +61,7 @@ df %>%
     x = "",
     y = "Precio en Córdobas",
     title = "Precio nominal de la libra de Queso Seco según la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Dic 2021",
+    subtitle = "Sep 2007 - Jun 2023",
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   )
 
@@ -115,7 +115,7 @@ df %>%
     x = "",
     y = "Precio en Córdobas",
     title = "Precio nominal de todos los 53 bienes de la la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Dic 2021",
+    subtitle = "Sep 2007 - Jun 2023",
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   )
 

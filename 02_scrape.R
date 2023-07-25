@@ -56,7 +56,9 @@ get_data <- function(url) {
 
 # Get data ----------------------------------------------------------------
 
-dfs <- map_dfr(list, get_data)
+list_reduc <- list[187:190]
+
+dfs <- map_dfr(list_reduc, get_data)
 
 # Getting month and year labels -------------------------------------------
 
@@ -85,18 +87,22 @@ clean_df_list %>%
     )
   )
 
-clean_df %>% 
+old_data <- read_rds("data/CB_FULL.rds")
+all_data <- old_data %>% 
+  bind_rows(clean_df)
+  
+all_data %>% 
   write.csv(
     "data/CB_FULL.csv",
     row.names = FALSE
   )
 
-clean_df %>% 
+all_data %>% 
   write_rds(
     "data/CB_FULL.rds"
   )
 
-clean_df %>% 
+all_data %>% 
   write_dta(
     "data/CB_FULL.dta"
   )

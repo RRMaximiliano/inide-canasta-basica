@@ -236,6 +236,12 @@ server <- function(input, output, session) {
   # Table por canasta
   output$tableCanasta <- renderDataTable({
     grouped_data %>% 
+      mutate(
+        ym = paste0(year, "-",as.numeric(month)),
+        ym = ym(ym)
+      ) %>% 
+      arrange(desc(ym)) %>% 
+      select(-ym) %>% 
       rename(total = sum) %>% 
       DT::datatable(
         options = list(
