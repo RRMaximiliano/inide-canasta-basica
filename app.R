@@ -9,51 +9,16 @@ library(DT)
 
 # Get Data ----------------------------------------------------------------
 
-data <- read_rds("data/CB_FULL.rds") %>% 
-  rename(good = bien) %>% 
-  mutate(
-    month = fct_relevel(
-      month, 
-      "Ene", "Feb", "Mar", "Abr", "May", "Jun", 
-      "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+# Load cleaned data (cleaning is now applied during data collection)
+data <- read_rds("data/CB_FULL.rds")
+
+# Add ym column if not already present
+if(!"ym" %in% names(data)) {
+  data <- data %>%
+    mutate(
+      ym = ym(paste0(year, "-", as.numeric(month)))
     )
-  ) %>%
-  mutate(
-    good = str_squish(good),
-    good = case_when(
-      str_detect(good, "Brassier") ~ "Brassier/sostén",
-      str_detect(good, "Desodorante") ~ "Desodorante nacional",
-      str_detect(good, "Pasta dental") ~ "Pasta dental",
-      str_detect(good, "Pastas dental") ~ "Pasta dental",
-      str_detect(good, "cuero natural") ~ "Zapato de cuero natural",
-      TRUE ~ good
-    )
-  ) %>% 
-  mutate(
-    ym = paste0(year, "-",as.numeric(month)),
-    ym = ym(ym)
-  ) %>% 
-  group_by(ym) %>% 
-  mutate(
-    rowid = row_number()
-  ) %>% 
-  ungroup() %>% 
-  mutate(
-    good = case_when(
-      good == "Calcetines" & rowid == 42 ~ "Calcetines (Hombre)",
-      good == "Calcetines" & rowid == 52 ~ "Calcetines (Niños y Niñas)",
-      good == "Pantalón largo de tela de jeans" & rowid == 39 ~ "Pantalón largo de tela de jeans (Hombre)",
-      good == "Pantalón largo de tela de jeans" & rowid == 45 ~ "Pantalón largo de tela de jeans (Mujeres)",
-      TRUE ~ good
-    )
-  ) %>% 
-  mutate(
-    medida = str_to_lower(medida),
-    precio = case_when(
-      is.na(precio) & good == "Alquiler" ~ total, 
-      TRUE ~ precio
-    )
-  )
+}
 
 grouped_data <- data %>% 
   group_by(year, month) %>% 

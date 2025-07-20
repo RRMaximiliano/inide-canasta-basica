@@ -1,18 +1,37 @@
 
+# Automated plot generation for Nicaragua Canasta Básica
+# This script generates figures used in README.md with dynamic dates
+
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, hrbrthemes, glue)
+pacman::p_load(tidyverse, janitor, lubridate, hrbrthemes, glue, scales)
 
 # Get data ----------------------------------------------------------------
 
 df <- read_rds("data/CB_FULL.rds")
 
-# Ejemplo con el arroz ----------------------------------------------------
+# Get dynamic date range for subtitles
+min_year <- min(df$year)
+max_year <- max(df$year)
+min_month <- df$month[df$year == min_year][1]
+max_month_data <- df %>% 
+  filter(year == max_year) %>% 
+  slice_tail(n = 1)
+max_month <- max_month_data$month
 
-df %>% 
-  filter(bien == "Arroz") %>% 
+# Create dynamic subtitle
+date_range <- glue("{min_month} {min_year} - {max_month} {max_year}")
+
+cat("Generating plots with date range:", date_range, "\n")
+
+# Arroz plot -------------------------------------------------------------
+
+cat("Generating Arroz plot...\n")
+
+arroz_plot <- df %>% 
+  filter(good == "Arroz") %>% 
   mutate(
-    ym = paste0(year, "-",as.numeric(month)),
+    ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
   ) %>% 
   ggplot(
@@ -21,18 +40,25 @@ df %>%
       y = precio
     )
   ) +
-  geom_line() +
+  geom_line(color = "#2E86AB", linewidth = 1.2) +
   theme_ipsum_rc() +
   labs(
     x = "",
     y = "Precio en Córdobas",
     title = "Precio nominal de la libra de Arroz según la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Jun 2023",
+    subtitle = date_range,
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
+  ) +
+  theme(
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 14),
+    axis.title.y = element_text(size = 12),
+    plot.caption = element_text(size = 10)
   )
 
 ggsave(
   "figures/arroz.png",
+  plot = arroz_plot,
   dpi = 320,
   height = 8,
   width = 12,
@@ -40,13 +66,17 @@ ggsave(
   bg = "white"
 )
 
+cat("✅ Arroz plot saved\n")
 
-# Queso -------------------------------------------------------------------
 
-df %>% 
-  filter(bien == "Queso seco") %>% 
+# Queso Seco plot --------------------------------------------------------
+
+cat("Generating Queso Seco plot...\n")
+
+queso_plot <- df %>% 
+  filter(good == "Queso seco") %>% 
   mutate(
-    ym = paste0(year, "-",as.numeric(month)),
+    ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
   ) %>% 
   ggplot(
@@ -55,18 +85,25 @@ df %>%
       y = precio
     )
   ) +
-  geom_line() +
+  geom_line(color = "#A23B72", linewidth = 1.2) +
   theme_ipsum_rc() +
   labs(
     x = "",
     y = "Precio en Córdobas",
     title = "Precio nominal de la libra de Queso Seco según la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Jun 2023",
+    subtitle = date_range,
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
+  ) +
+  theme(
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 14),
+    axis.title.y = element_text(size = 12),
+    plot.caption = element_text(size = 10)
   )
 
 ggsave(
   "figures/queso_seco.png",
+  plot = queso_plot,
   dpi = 320,
   height = 8,
   width = 12,
@@ -74,61 +111,20 @@ ggsave(
   bg = "white"
 )
 
-# All products ------------------------------------------------------------
+cat("✅ Queso Seco plot saved\n")
 
-df %>%
-  mutate(
-    bien = ifelse(str_detect(bien, "Brassier"), "Brassiers / Sostén", bien),
-    bien = ifelse(str_detect(bien, "Desodorante"), "Desodorante", bien),
-    bien = ifelse(str_detect(bien, "pescado|Pescado"), "Chuleta de Pescado", bien),
-    bien = ifelse(str_detect(bien, "Leche"), "Leche", bien),
-    bien = ifelse(str_detect(bien, "Detergente"), "Detergente", bien),
-    bien = ifelse(str_detect(bien, "Jabón de lavar"), "Jabón de lavar", bien),
-    bien = ifelse(str_detect(bien, "Pastas dental"), "Pasta dental", bien),
-    bien = ifelse(str_detect(bien, "cuero natural"), "Zapato de cuero natural", bien),
-    bien = ifelse(row == 39, glue("{bien} (Hombres y Niños)"), bien),
-    bien = ifelse(row == 45, glue("{bien} (Mujeres y Niñas)"), bien),
-    bien = ifelse(row == 42, glue("{bien} (> 10 años)"), bien),
-    bien = ifelse(row == 52, glue("{bien} (< 10 años)"), bien)
-  ) %>% 
-  # group_by(bien) %>%  
-  mutate(
-    ym = paste0(year, "-",as.numeric(month)),
-    ym = ym(ym)
-  ) %>% 
-  group_by(bien) %>% 
-  mutate(
-    pct = (total - lag(total)) / lag(total)
-  ) %>% 
-  arrange(bien, ym) %>%
-  ggplot(
-    aes(
-      x = ym,
-      y = precio,
-      group = bien
-    )
-  ) +
-  geom_line() +
-  facet_wrap(~ bien, scales = "free_y") + 
-  theme_ipsum_rc() +
-  labs(
-    x = "",
-    y = "Precio en Córdobas",
-    title = "Precio nominal de todos los 53 bienes de la la Canasta Básica de Nicaragua",
-    subtitle = "Sep 2007 - Jun 2023",
-    caption = "Fuente: INIDE | Plot: @rrmaximiliano"
-  )
+# Total Canasta Básica plot ----------------------------------------------
 
+cat("Generating Total Canasta Básica plot...\n")
 
-# Total -------------------------------------------------------------------
-
-df %>% 
+total_plot <- df %>% 
   group_by(year, month) %>% 
   summarize(
-    sum = sum(total)
+    sum = sum(total, na.rm = TRUE),
+    .groups = "drop"
   ) %>% 
   mutate(
-    ym = paste0(year, "-",as.numeric(month)),
+    ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
   ) %>% 
   ggplot(
@@ -137,29 +133,40 @@ df %>%
       y = sum
     )
   ) +
-  geom_line() +
+  geom_line(color = "#F18F01", linewidth = 1.2) +
   labs(
     x = "",
     y = "Precio en Córdobas",
-    title = "Precio nominal total de la canasta básica",
+    title = "Precio nominal total de la canasta básica de Nicaragua",
+    subtitle = date_range,
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   ) +
-  scale_y_continuous(labels = scales::comma) +
+  scale_y_continuous(labels = comma_format()) +
   theme_ipsum_rc() +
   theme(
-    axis.text.x = element_text(size = 16),
-    axis.text.y = element_text(size = 16),
-    axis.title = element_text(size = 18, face = "bold"),
-    plot.title = element_text(size = 20, face = "bold"),
-    plot.subtitle = element_text(size = 18),
-    plot.caption = element_text(size = 14)
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    axis.title = element_text(size = 14, face = "bold"),
+    plot.title = element_text(size = 18, face = "bold"),
+    plot.subtitle = element_text(size = 14),
+    plot.caption = element_text(size = 10)
   )
 
 ggsave(
   "figures/canasta_basica.png",
+  plot = total_plot,
   dpi = 320,
   height = 8,
   width = 12,
   scale = 0.8,
   bg = "white"
 )
+
+cat("✅ Total Canasta Básica plot saved\n")
+
+# Summary -----------------------------------------------------------------
+
+cat("\n🎨 Plot generation completed successfully!\n")
+cat("📊 Generated plots with data range:", date_range, "\n")
+cat("📁 All plots saved to figures/ directory\n")
+cat("🔄 Plots are ready for README.md\n")

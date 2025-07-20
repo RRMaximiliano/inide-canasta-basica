@@ -1,0 +1,91 @@
+name: Update Canasta Básica Data
+
+on:
+  schedule:
+    # Run on the 15th of each month at 10:00 AM UTC
+    - cron: '0 10 15 * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: '4.3.0'
+        
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+        
+    - name: Cache R packages
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.R_LIBS_USER }}
+        key: ${{ runner.os }}-r-${{ hashFiles('DESCRIPTION') }}
+        restore-keys: ${{ runner.os }}-r-
+        
+    - name: Install R dependencies
+      run: |
+        Rscript -e "if (!require('pacman')) install.packages('pacman')"
+        Rscript -e "pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, haven, readxl, rvest, rsconnect, knitr, hrbrthemes, scales)"
+        
+    - name: Run data update script
+      run: |
+        Rscript 02_scrape_auto.R
+        
+    - name: Generate plots
+      run: |
+        Rscript 03_plots.R
+        
+    - name: Update README
+      run: |
+        Rscript -e "knitr::knit('README.Rmd', output = 'README.md')"
+        
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/ figures/ README.md
+        git commit -m "Update canasta básica data, plots, and README - $(date +'%Y-%m-%d')"
+        git push
+        
+    - name: Deploy Shiny App (if changed)
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      env:
+        SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+        SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+      run: |
+        if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
+          Rscript -e "
+            rsconnect::setAccountInfo(
+              name = 'rrmaximiliano',
+              token = Sys.getenv('SHINYAPPS_TOKEN'),
+              secret = Sys.getenv('SHINYAPPS_SECRET')
+            )
+            rsconnect::deployApp(
+              appDir = '.',
+              appName = 'inide-canasta-basica',
+              forceUpdate = TRUE
+            )
+          "
+          echo "Shiny app deployed successfully"
+        else
+          echo "Shiny deployment credentials not found, skipping deployment"
+        fi
