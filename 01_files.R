@@ -1,8 +1,11 @@
 
 # Packages ----------------------------------------------------------------
 
-library(tidyverse)
-library(janitor)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(tibble)
+library(forcats)
 library(lubridate)
 library(rio)
 library(glue)

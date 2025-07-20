@@ -4,8 +4,9 @@
 
 # Packages ----------------------------------------------------------------
 
-library(tidyverse)
-library(janitor)
+library(dplyr)
+library(readr)
+library(ggplot2)
 library(lubridate)
 library(hrbrthemes)
 library(glue)
