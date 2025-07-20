@@ -3,7 +3,15 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, haven, readxl, rvest)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(rio)
+library(glue)
+library(gdata)
+library(haven)
+library(readxl)
+library(rvest)
 
 # Data cleaning function ------------------------------------------------
 

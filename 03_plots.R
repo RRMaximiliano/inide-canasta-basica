@@ -4,7 +4,12 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, hrbrthemes, glue, scales)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(hrbrthemes)
+library(glue)
+library(scales)
 
 # Get data ----------------------------------------------------------------
 

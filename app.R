@@ -20,10 +20,22 @@ if(!"ym" %in% names(data)) {
     )
 }
 
+# Calculate last update information
+last_data_point <- data %>%
+  arrange(desc(year), desc(match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
+                                          "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))) %>%
+  slice(1)
+
+last_update_text <- paste("Última actualización de datos:", last_data_point$month, last_data_point$year)
+
+# Add app deployment date
+app_updated_text <- paste("Aplicación actualizada:", format(Sys.Date(), "%d/%m/%Y"))
+
 grouped_data <- data %>% 
   group_by(year, month) %>% 
   summarize(
-    sum = sum(total)
+    sum = sum(total),
+    .groups = "drop"
   ) 
 
 # UI ----------------------------------------------------------------------
@@ -58,7 +70,10 @@ ui <- fluidPage(
       p(""),
       p("En Nicaragua, la Canasta Básica se compone de tres categorías principales: alimentos, uso doméstico y vestimenta. Se originó en 1988 a raíz de una sugerencia de la Secretaría de Planificación y Presupuesto (SPP) y se basó en datos recopilados en la Encuesta de Ingresos y Gastos de los hogares 1984-85."),
       p("La versión actualizada en 2005 proporciona un total de 2,455 calorías diarias por persona y está diseñada para satisfacer las necesidades energéticas de seis personas con un nivel moderado de actividad física."),
-      p("La cobertura de esta canasta está restringida al área urbana de la ciudad de Managua.")
+      p("La cobertura de esta canasta está restringida al área urbana de la ciudad de Managua."),
+      hr(),
+      p(strong(last_update_text), style = "color: #2E86AB; font-size: 14px;"),
+      p(app_updated_text, style = "color: #666; font-size: 12px;")
     ),
     mainPanel(
       tabsetPanel(

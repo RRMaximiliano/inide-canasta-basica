@@ -33,13 +33,18 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-renv-
           
-    - name: Install R dependencies (fast)
+    - name: Install R dependencies
       run: |
-        # Install only essential packages quickly
+        # Install required packages
         Rscript -e "
-          pkgs <- c('tidyverse', 'lubridate', 'readxl', 'rvest', 'knitr', 'rsconnect')
+          pkgs <- c('tidyverse', 'janitor', 'lubridate', 'rio', 'glue', 'gdata', 'haven', 'readxl', 'rvest', 'knitr', 'rsconnect', 'hrbrthemes', 'scales')
           new_pkgs <- pkgs[!(pkgs %in% installed.packages()[,'Package'])]
-          if(length(new_pkgs)) install.packages(new_pkgs, repos='https://cloud.r-project.org/', Ncpus=2)
+          if(length(new_pkgs)) {
+            cat('Installing packages:', paste(new_pkgs, collapse=', '), '\n')
+            install.packages(new_pkgs, repos='https://cloud.r-project.org/', Ncpus=2)
+          } else {
+            cat('All required packages already installed\n')
+          }
         "
         
     - name: Run data update script

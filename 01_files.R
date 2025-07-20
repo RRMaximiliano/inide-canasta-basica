@@ -1,7 +1,13 @@
 
 # Packages ----------------------------------------------------------------
 
-pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, stringi)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(rio)
+library(glue)
+library(gdata)
+library(stringi)
 
 # Scrape data -------------------------------------------------------------
 
