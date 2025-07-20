@@ -9,6 +9,7 @@ on:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Fail if it takes longer than 10 minutes
     
     steps:
     - name: Checkout repository
@@ -27,24 +28,42 @@ jobs:
     - name: Cache R packages
       uses: actions/cache@v3
       with:
-        path: ${{ env.R_LIBS_USER }}
-        key: ${{ runner.os }}-r-${{ hashFiles('DESCRIPTION') }}
-        restore-keys: ${{ runner.os }}-r-
-        
-    - name: Install R dependencies
+        path: ~/.local/share/renv
+        key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-renv-
+          
+    - name: Install R dependencies (fast)
       run: |
-        Rscript -e "if (!require('pacman')) install.packages('pacman')"
-        Rscript -e "pacman::p_load(tidyverse, janitor, lubridate, rio, glue, gdata, haven, readxl, rvest, rsconnect, knitr, hrbrthemes, scales)"
+        # Install only essential packages quickly
+        Rscript -e "
+          pkgs <- c('tidyverse', 'lubridate', 'readxl', 'rvest', 'knitr', 'rsconnect')
+          new_pkgs <- pkgs[!(pkgs %in% installed.packages()[,'Package'])]
+          if(length(new_pkgs)) install.packages(new_pkgs, repos='https://cloud.r-project.org/', Ncpus=2)
+        "
         
     - name: Run data update script
       run: |
         Rscript 02_scrape_auto.R
         
-    - name: Generate plots
+    - name: Check if data changed
+      id: check-data-changes
+      run: |
+        if [ -f "no_data_changes.flag" ]; then
+          echo "data_changed=false" >> $GITHUB_OUTPUT
+          echo "No new data found, skipping expensive operations"
+        else
+          echo "data_changed=true" >> $GITHUB_OUTPUT
+          echo "New data found, proceeding with full update"
+        fi
+        
+    - name: Generate plots (only if data changed)
+      if: steps.check-data-changes.outputs.data_changed == 'true'
       run: |
         Rscript 03_plots.R
         
-    - name: Update README
+    - name: Update README (only if data changed)
+      if: steps.check-data-changes.outputs.data_changed == 'true'
       run: |
         Rscript -e "knitr::knit('README.Rmd', output = 'README.md')"
         
@@ -79,10 +98,13 @@ jobs:
               token = Sys.getenv('SHINYAPPS_TOKEN'),
               secret = Sys.getenv('SHINYAPPS_SECRET')
             )
+            # Deploy only essential files to speed up deployment
             rsconnect::deployApp(
               appDir = '.',
+              appFiles = c('app.R', 'data/CB_FULL.rds'),
               appName = 'inide-canasta-basica',
-              forceUpdate = TRUE
+              forceUpdate = TRUE,
+              launch.browser = FALSE
             )
           "
           echo "Shiny app deployed successfully"

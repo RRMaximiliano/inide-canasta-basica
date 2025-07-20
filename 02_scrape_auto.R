@@ -242,6 +242,8 @@ cat("Found", nrow(new_urls), "new files to download\n")
 
 if(nrow(new_urls) == 0) {
   cat("No new data to download. Data is up to date.\n")
+  # Create a flag file to indicate no changes for GitHub Actions
+  writeLines("no-changes", "no_data_changes.flag")
   quit(status = 0)
 }
 
