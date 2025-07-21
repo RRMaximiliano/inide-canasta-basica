@@ -134,44 +134,11 @@ jobs:
           ls -la deploy_temp/
           ls -la deploy_temp/data
 
-      - name: Set global CRAN repository
+      - name: Deploy to shinyapps.io
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
-          # Set CRAN globally to override RSPM before rsconnect captures dependencies
-          echo 'options(repos = c(CRAN = "http://cran.rstudio.com/"))' > ~/.Rprofile
-          echo "Set global CRAN repository to override RSPM"
-
-      - name: Deploy Shiny App
-        if: steps.check-deploy.outputs.deploy == 'true'
-        env:
-          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
-          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
-        run: |
-          if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
-            echo "Deploying Shiny app..."
-            Rscript -e "
-              # Force CRAN repository to override RSPM
-              options(repos = c(CRAN = 'http://cran.rstudio.com/'))
-              
-              rsconnect::setAccountInfo(
-                name = 'rrmaximiliano',
-                token = Sys.getenv('SHINYAPPS_TOKEN'),
-                secret = Sys.getenv('SHINYAPPS_SECRET')
-              )
-              
-              # Deploy with CRAN sources
-              rsconnect::deployApp(
-                appDir = 'deploy_temp',
-                appName = 'inide-canasta-basica',
-                forceUpdate = TRUE,
-                launch.browser = FALSE,
-                envManagement = FALSE
-              )
-            "
-            echo "✅ Shiny app deployed successfully"
-          else
-            echo "❌ Shiny deployment credentials not found, skipping deployment"
-          fi
+          Rscript -e "rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
+          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica')"
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
