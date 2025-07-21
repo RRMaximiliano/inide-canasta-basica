@@ -3,7 +3,6 @@ library(shiny)
 library(dplyr)
 library(readr)
 library(ggplot2)
-library(lubridate)
 library(forcats)
 library(stringr)
 library(hrbrthemes)
@@ -21,7 +20,7 @@ data <- read_rds("data/CB_FULL.rds")
 if(!"ym" %in% names(data)) {
   data <- data %>%
     mutate(
-      ym = ym(paste0(year, "-", as.numeric(month)))
+      ym = as.Date(paste0(year, "-", sprintf("%02d", as.numeric(month)), "-01"))
     )
 }
 
@@ -127,8 +126,7 @@ server <- function(input, output, session) {
     
     plot <- filtered_data() %>% 
       mutate(
-        ym = paste0(year, "-",as.numeric(month)),
-        ym = ym(ym)
+        ym = as.Date(paste0(year, "-", sprintf("%02d", as.numeric(month)), "-01"))
       ) %>% 
       ggplot(
         aes(
@@ -189,8 +187,7 @@ server <- function(input, output, session) {
   output$plotCanasta <- renderPlot({
     plot <- grouped_data %>% 
       mutate(
-        ym = paste0(year, "-",as.numeric(month)),
-        ym = ym(ym)
+        ym = as.Date(paste0(year, "-", sprintf("%02d", as.numeric(month)), "-01"))
       ) %>% 
       ggplot(
         aes(
@@ -222,8 +219,7 @@ server <- function(input, output, session) {
   output$tableCanasta <- renderDataTable({
     grouped_data %>% 
       mutate(
-        ym = paste0(year, "-",as.numeric(month)),
-        ym = ym(ym)
+        ym = as.Date(paste0(year, "-", sprintf("%02d", as.numeric(month)), "-01"))
       ) %>% 
       arrange(desc(ym)) %>% 
       select(-ym) %>% 

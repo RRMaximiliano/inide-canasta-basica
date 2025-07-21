@@ -35,7 +35,6 @@ jobs:
             any::dplyr
             any::readr
             any::ggplot2
-            any::lubridate
             any::forcats
             any::stringr
             any::hrbrthemes
@@ -49,9 +48,6 @@ jobs:
             any::glue
             any::readxl
             any::rvest
-            any::cpp11
-            any::progress
-            any::vroom
 
       - name: Run data update script
         run: |
