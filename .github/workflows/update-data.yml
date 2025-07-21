@@ -19,7 +19,7 @@ jobs:
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: "4.4.1"
-          use-public-rspm: true
+          use-public-rspm: false
 
       - name: Install system dependencies
         run: |
@@ -128,11 +128,18 @@ jobs:
           cp app.R deploy_temp/
           mkdir -p deploy_temp/data
           cp data/CB_FULL.rds deploy_temp/data/
-          
+
           echo "Prepared minimal deployment directory with only Shiny app files"
           echo "Contents:"
           ls -la deploy_temp/
           ls -la deploy_temp/data
+
+      - name: Set CRAN repository for deployment
+        if: steps.check-deploy.outputs.deploy == 'true'
+        run: |
+          # Force R to use CRAN instead of RSPM for package sources
+          echo 'options(repos = c(CRAN = "https://cloud.r-project.org/"))' > ~/.Rprofile
+          echo "Set CRAN as default repository"
 
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
@@ -143,6 +150,9 @@ jobs:
           if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
             echo "Deploying Shiny app..."
             Rscript -e "
+              # Explicitly set CRAN repository to avoid RSPM issues
+              options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+              
               rsconnect::setAccountInfo(
                 name = 'rrmaximiliano',
                 token = Sys.getenv('SHINYAPPS_TOKEN'),
