@@ -127,7 +127,7 @@ jobs:
           cp app.R deploy_temp/
           mkdir -p deploy_temp/data
           cp data/CB_FULL.rds deploy_temp/data/
-          
+
           # Initialize renv in deployment directory
           cd deploy_temp
           Rscript -e "
@@ -136,28 +136,31 @@ jobs:
             # Install all required packages including dependencies
             renv::install(c(
               'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 
-              'hrbrthemes', 'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom'
+              'hrbrthemes', 'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect'
             ))
             renv::snapshot()
           "
           cd ..
-          
+
           echo "Prepared deployment directory with renv"
 
       - name: Deploy to shinyapps.io
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
-          # Install missing packages that renv might need
+          # Install rsconnect globally
           Rscript -e "
-            install.packages(c('cpp11', 'progress', 'vroom'), repos = 'https://cloud.r-project.org/')
+            install.packages('rsconnect', repos = 'https://cloud.r-project.org/')
+            rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')
           "
-          
-          # Set account info
-          Rscript -e "rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
-          
+
           # Deploy with renv
           cd deploy_temp
           Rscript -e "
+            # Make sure rsconnect is available in the renv environment
+            if (!requireNamespace('rsconnect', quietly = TRUE)) {
+              install.packages('rsconnect', repos = 'https://cloud.r-project.org/')
+            }
+            
             # Use renv for deployment
             rsconnect::deployApp(
               appName = 'inide-canasta-basica',
