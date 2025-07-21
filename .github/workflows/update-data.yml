@@ -131,7 +131,7 @@ jobs:
           echo "Prepared minimal deployment directory with only Shiny app files"
           echo "Contents:"
           ls -la deploy_temp/
-          ls -la deploy_temp/dat
+          ls -la deploy_temp/dataa
 
       - name: Create deployment manifest
         if: steps.check-deploy.outputs.deploy == 'true'
