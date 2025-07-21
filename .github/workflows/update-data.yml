@@ -49,6 +49,9 @@ jobs:
             any::glue
             any::readxl
             any::rvest
+            any::cpp11
+            any::progress
+            any::vroom
 
       - name: Run data update script
         run: |
@@ -128,7 +131,7 @@ jobs:
           echo "Prepared minimal deployment directory with only Shiny app files"
           echo "Contents:"
           ls -la deploy_temp/
-          ls -la deploy_temp/data/
+          ls -la deploy_temp/dat
 
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
@@ -146,11 +149,13 @@ jobs:
               )
               
               # Deploy from clean directory with only essential files
+              # Disable renv to avoid dependency snapshot issues
               rsconnect::deployApp(
                 appDir = 'deploy_temp',
                 appName = 'inide-canasta-basica',
                 forceUpdate = TRUE,
-                launch.browser = FALSE
+                launch.browser = FALSE,
+                envManagement = FALSE
               )
             "
             echo "✅ Shiny app deployed successfully"
