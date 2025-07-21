@@ -128,136 +128,33 @@ jobs:
           cp app.R deploy_temp/
           mkdir -p deploy_temp/data
           cp data/CB_FULL.rds deploy_temp/data/
+          
           echo "Prepared minimal deployment directory with only Shiny app files"
           echo "Contents:"
           ls -la deploy_temp/
           ls -la deploy_temp/data
 
-      - name: Reset R repository to CRAN for deployment
+      - name: Setup renv for deployment
         if: steps.check-deploy.outputs.deploy == 'true'
-        run: |
-          # Reset R repository to CRAN to avoid RSPM issues on shinyapps.io
-          Rscript -e "
-            options(repos = c(CRAN = 'https://cloud.r-project.org/'))
-            cat('Repository set to:', getOption('repos'), '\n')
-          "
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          working-directory: deploy_temp
 
-      - name: Create deployment manifest
+      - name: Install rsconnect for deployment
         if: steps.check-deploy.outputs.deploy == 'true'
-        run: |
-          # Create a simple manifest.json to explicitly define dependencies
-          # This bypasses the automatic dependency detection that's failing
-          cat > deploy_temp/manifest.json << 'EOF'
-          {
-            "version": 1,
-            "locale": "en_US.UTF-8",
-            "metadata": {
-              "appmode": "shiny",
-              "entrypoint": "app.R"
-            },
-            "packages": {
-              "R": [
-                {
-                  "package": "shiny",
-                  "version": "1.8.0",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "dplyr",
-                  "version": "1.1.4",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "readr",
-                  "version": "2.1.4",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "ggplot2",
-                  "version": "3.4.4",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "lubridate",
-                  "version": "1.9.3",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "forcats",
-                  "version": "1.0.0",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "stringr",
-                  "version": "1.5.1",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "hrbrthemes",
-                  "version": "0.8.7",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "bslib",
-                  "version": "0.6.1",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "scales",
-                  "version": "1.3.0",
-                  "source": "CRAN"
-                },
-                {
-                  "package": "DT",
-                  "version": "0.31",
-                  "source": "CRAN"
-                }
-              ]
-            },
-            "files": {
-              "app.R": {
-                "checksum": "5d41402abc4b2a76b9719d911017c592"
-              },
-              "data/CB_FULL.rds": {
-                "checksum": "5d41402abc4b2a76b9719d911017c592"
-              }
-            }
-          }
-          EOF
-          echo "Created deployment manifest with explicit package list"
+        run: install.packages("rsconnect")
+        shell: Rscript {0}
 
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
         env:
-          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
-          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+          APPNAME: inide-canasta-basica
+          ACCOUNT: rrmaximiliano
+          SERVER: shinyapps.io
         run: |
-          if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
-            echo "Deploying Shiny app..."
-            Rscript -e "
-              # Set repository to CRAN to avoid RSPM issues
-              options(repos = c(CRAN = 'https://cloud.r-project.org/'))
-              
-              rsconnect::setAccountInfo(
-                name = 'rrmaximiliano',
-                token = Sys.getenv('SHINYAPPS_TOKEN'),
-                secret = Sys.getenv('SHINYAPPS_SECRET')
-              )
-              
-              # Completely disable environment management to avoid renv issues
-              # This will use the system packages instead of trying to snapshot
-              rsconnect::deployApp(
-                appDir = 'deploy_temp',
-                appName = 'inide-canasta-basica',
-                forceUpdate = TRUE,
-                launch.browser = FALSE,
-                envManagement = FALSE
-              )
-            "
-            echo "✅ Shiny app deployed successfully"
-          else
-            echo "❌ Shiny deployment credentials not found, skipping deployment"
-          fi
+          rsconnect::setAccountInfo("${{ secrets.SHINYAPPS_USER }}", "${{ secrets.SHINYAPPS_TOKEN }}", "${{ secrets.SHINYAPPS_SECRET }}")
+          rsconnect::deployApp(appDir = "deploy_temp", appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
+        shell: Rscript {0}
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
