@@ -35,6 +35,7 @@ jobs:
             any::dplyr
             any::readr
             any::ggplot2
+            any::lubridate
             any::forcats
             any::stringr
             any::hrbrthemes
@@ -48,6 +49,7 @@ jobs:
             any::glue
             any::readxl
             any::rvest
+            any::renv
             any::lubridate
 
       - name: Run data update script
@@ -117,25 +119,32 @@ jobs:
             echo "Skipping deployment: Unknown trigger"
           fi
 
-      - name: Prepare deployment directory
+      - name: Prepare deployment directory with renv
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
-          # Create a completely clean deployment directory with only Shiny app files
+          # Create deployment directory
           mkdir -p deploy_temp
           cp app.R deploy_temp/
           mkdir -p deploy_temp/data
           cp data/CB_FULL.rds deploy_temp/data/
-
-          echo "Prepared minimal deployment directory with only Shiny app files"
-          echo "Contents:"
-          ls -la deploy_temp/
-          ls -la deploy_temp/data
+          
+          # Initialize renv in deployment directory
+          cd deploy_temp
+          Rscript -e "
+            options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+            renv::init(bare = TRUE)
+            renv::install(c('shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 'hrbrthemes', 'bslib', 'scales', 'DT'))
+            renv::snapshot()
+          "
+          cd ..
+          
+          echo "Prepared deployment directory with renv"
 
       - name: Deploy to shinyapps.io
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
           Rscript -e "rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
-          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica', forceUpdate = TRUE, envManagement = FALSE)"
+          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica', forceUpdate = TRUE)"
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
