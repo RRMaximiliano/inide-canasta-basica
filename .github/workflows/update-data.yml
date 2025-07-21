@@ -135,7 +135,7 @@ jobs:
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
           Rscript -e "rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
-          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica', forceUpdate = TRUE)"
+          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica', forceUpdate = TRUE, envManagement = FALSE)"
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
