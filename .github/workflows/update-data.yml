@@ -9,7 +9,7 @@ on:
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 10 # Fail if it takes longer than 10 minutes
+    timeout-minutes: 15 # Should be much faster with r-lib/actions
 
     steps:
       - name: Checkout repository
@@ -18,49 +18,37 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: "4.3.0"
+          r-version: "4.4.1"
+          use-public-rspm: true
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Cache R packages
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/DESCRIPTION') }}
-          restore-keys: |
-            ${{ runner.os }}-r-packages-
-
       - name: Install R dependencies
-        run: |
-          # Install specific packages (faster and more reliable than tidyverse)
-          Rscript -e "
-            options(repos = c(CRAN = 'https://cloud.r-project.org/'))
-            pkgs <- c('dplyr', 'purrr', 'stringr', 'tibble', 'readr', 'forcats', 'ggplot2', 'lubridate', 'glue', 'readxl', 'rvest', 'knitr', 'rsconnect', 'hrbrthemes', 'scales', 'shiny', 'bslib', 'DT')
-            
-            cat('Checking installed packages...\n')
-            installed <- installed.packages()[,'Package']
-            new_pkgs <- pkgs[!(pkgs %in% installed)]
-            
-            if(length(new_pkgs) > 0) {
-              cat('Installing', length(new_pkgs), 'packages:', paste(new_pkgs, collapse=', '), '\n')
-              install.packages(new_pkgs, dependencies = TRUE, Ncpus = 2)
-              cat('Package installation completed\n')
-            } else {
-              cat('All', length(pkgs), 'required packages already installed\n')
-            }
-            
-            # Verify all packages can be loaded
-            cat('Verifying package installation...\n')
-            for(pkg in pkgs) {
-              if(!require(pkg, character.only = TRUE, quietly = TRUE)) {
-                stop('Failed to load package: ', pkg)
-              }
-            }
-            cat('All packages verified successfully\n')
-          "
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+          packages: |
+            any::dplyr
+            any::purrr
+            any::stringr
+            any::tibble
+            any::readr
+            any::forcats
+            any::ggplot2
+            any::lubridate
+            any::glue
+            any::readxl
+            any::rvest
+            any::knitr
+            any::rsconnect
+            any::hrbrthemes
+            any::scales
+            any::shiny
+            any::bslib
+            any::DT
 
       - name: Run data update script
         run: |
