@@ -105,16 +105,16 @@ jobs:
         id: check-deploy
         run: |
           # Always deploy on scheduled runs to keep app current
-          # Deploy on manual runs if there are changes
+          # Always deploy on manual runs (regardless of data changes)
           if [ "${{ github.event_name }}" == "schedule" ]; then
             echo "deploy=true" >> $GITHUB_OUTPUT
             echo "Deploying: Monthly scheduled run - keeping app current"
-          elif [ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]; then
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "deploy=true" >> $GITHUB_OUTPUT
-            echo "Deploying: Changes detected"
+            echo "Deploying: Manual run - always deploy when manually triggered"
           else
             echo "deploy=false" >> $GITHUB_OUTPUT
-            echo "Skipping deployment: Manual run with no changes"
+            echo "Skipping deployment: Unknown trigger"
           fi
 
       - name: Deploy Shiny App
