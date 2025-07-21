@@ -133,7 +133,11 @@ jobs:
           Rscript -e "
             options(repos = c(CRAN = 'https://cloud.r-project.org/'))
             renv::init(bare = TRUE)
-            renv::install(c('shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 'hrbrthemes', 'bslib', 'scales', 'DT'))
+            # Install all required packages including dependencies
+            renv::install(c(
+              'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 
+              'hrbrthemes', 'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom'
+            ))
             renv::snapshot()
           "
           cd ..
@@ -143,8 +147,25 @@ jobs:
       - name: Deploy to shinyapps.io
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
+          # Install missing packages that renv might need
+          Rscript -e "
+            install.packages(c('cpp11', 'progress', 'vroom'), repos = 'https://cloud.r-project.org/')
+          "
+          
+          # Set account info
           Rscript -e "rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')"
-          Rscript -e "rsconnect::deployApp(appDir = 'deploy_temp', appName = 'inide-canasta-basica', forceUpdate = TRUE)"
+          
+          # Deploy with renv
+          cd deploy_temp
+          Rscript -e "
+            # Use renv for deployment
+            rsconnect::deployApp(
+              appName = 'inide-canasta-basica',
+              forceUpdate = TRUE,
+              launch.browser = FALSE
+            )
+          "
+          cd ..
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
