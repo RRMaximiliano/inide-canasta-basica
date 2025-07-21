@@ -117,6 +117,21 @@ jobs:
             echo "Skipping deployment: Unknown trigger"
           fi
 
+      - name: Install deployment dependencies
+        if: steps.check-deploy.outputs.deploy == 'true'
+        run: |
+          # Install additional packages needed for deployment
+          Rscript -e "
+            # Install missing packages that rsconnect needs
+            missing_pkgs <- c('cpp11', 'progress', 'vroom')
+            for(pkg in missing_pkgs) {
+              if(!require(pkg, character.only = TRUE, quietly = TRUE)) {
+                cat('Installing', pkg, '...\n')
+                install.packages(pkg, repos = 'https://cloud.r-project.org/')
+              }
+            }
+          "
+
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
         env:
@@ -131,10 +146,10 @@ jobs:
                 token = Sys.getenv('SHINYAPPS_TOKEN'),
                 secret = Sys.getenv('SHINYAPPS_SECRET')
               )
-              # Deploy only essential files to speed up deployment
+              
+              # Deploy with proper dependency detection
               rsconnect::deployApp(
                 appDir = '.',
-                appFiles = c('app.R', 'data/CB_FULL.rds'),
                 appName = 'inide-canasta-basica',
                 forceUpdate = TRUE,
                 launch.browser = FALSE
