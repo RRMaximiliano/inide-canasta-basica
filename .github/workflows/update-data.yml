@@ -134,27 +134,34 @@ jobs:
           ls -la deploy_temp/
           ls -la deploy_temp/data
 
-      - name: Setup renv for deployment
-        if: steps.check-deploy.outputs.deploy == 'true'
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          working-directory: deploy_temp
-
-      - name: Install rsconnect for deployment
-        if: steps.check-deploy.outputs.deploy == 'true'
-        run: install.packages("rsconnect")
-        shell: Rscript {0}
-
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
         env:
-          APPNAME: inide-canasta-basica
-          ACCOUNT: rrmaximiliano
-          SERVER: shinyapps.io
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
         run: |
-          rsconnect::setAccountInfo("${{ secrets.SHINYAPPS_USER }}", "${{ secrets.SHINYAPPS_TOKEN }}", "${{ secrets.SHINYAPPS_SECRET }}")
-          rsconnect::deployApp(appDir = "deploy_temp", appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
-        shell: Rscript {0}
+          if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
+            echo "Deploying Shiny app..."
+            Rscript -e "
+              rsconnect::setAccountInfo(
+                name = 'rrmaximiliano',
+                token = Sys.getenv('SHINYAPPS_TOKEN'),
+                secret = Sys.getenv('SHINYAPPS_SECRET')
+              )
+              
+              # Deploy without environment management to avoid renv/packrat issues
+              rsconnect::deployApp(
+                appDir = 'deploy_temp',
+                appName = 'inide-canasta-basica',
+                forceUpdate = TRUE,
+                launch.browser = FALSE,
+                envManagement = FALSE
+              )
+            "
+            echo "✅ Shiny app deployed successfully"
+          else
+            echo "❌ Shiny deployment credentials not found, skipping deployment"
+          fi
 
       - name: Clean up deployment directory
         if: steps.check-deploy.outputs.deploy == 'true'
