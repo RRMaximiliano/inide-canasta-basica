@@ -1,0 +1,18 @@
+# Exclude unnecessary files from Shiny app deployment
+.github/
+01_files.R
+02_scrape*.R
+03_plots.R
+data/CB_FULL_raw.*
+data/monthly/
+figures/
+README.Rmd
+README.md
+LICENSE.md
+*.Rproj
+.Rproj.user/
+.git/
+.gitignore
+.Rhistory
+.DS_Store
+no_data_changes.flag
