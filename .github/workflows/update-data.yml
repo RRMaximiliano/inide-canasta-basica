@@ -133,6 +133,15 @@ jobs:
           ls -la deploy_temp/
           ls -la deploy_temp/data
 
+      - name: Reset R repository to CRAN for deployment
+        if: steps.check-deploy.outputs.deploy == 'true'
+        run: |
+          # Reset R repository to CRAN to avoid RSPM issues on shinyapps.io
+          Rscript -e "
+            options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+            cat('Repository set to:', getOption('repos'), '\n')
+          "
+
       - name: Create deployment manifest
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
@@ -226,6 +235,9 @@ jobs:
           if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
             echo "Deploying Shiny app..."
             Rscript -e "
+              # Set repository to CRAN to avoid RSPM issues
+              options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+              
               rsconnect::setAccountInfo(
                 name = 'rrmaximiliano',
                 token = Sys.getenv('SHINYAPPS_TOKEN'),
