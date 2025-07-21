@@ -134,33 +134,12 @@ jobs:
           ls -la deploy_temp/
           ls -la deploy_temp/data
 
-      - name: Create clean deployment environment
+      - name: Set global CRAN repository
         if: steps.check-deploy.outputs.deploy == 'true'
         run: |
-          # Create a clean R environment for deployment with CRAN sources
-          cd deploy_temp
-          
-          # Create .Rprofile that forces CRAN
-          cat > .Rprofile << 'EOF'
-          options(repos = c(CRAN = "https://cloud.r-project.org/"))
-          EOF
-          
-          # Install only essential packages from CRAN in deployment directory
-          Rscript -e "
-            options(repos = c(CRAN = 'https://cloud.r-project.org/'))
-            
-            # Install only the packages actually used in the Shiny app
-            essential_packages <- c('shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 'hrbrthemes', 'bslib', 'scales', 'DT')
-            
-            for(pkg in essential_packages) {
-              if(!require(pkg, character.only = TRUE, quietly = TRUE)) {
-                cat('Installing', pkg, 'from CRAN for deployment\n')
-                install.packages(pkg, repos = 'https://cloud.r-project.org/', dependencies = FALSE, quiet = TRUE)
-              }
-            }
-            cat('Deployment packages ready\n')
-          "
-          cd ..
+          # Set CRAN globally to override RSPM before rsconnect captures dependencies
+          echo 'options(repos = c(CRAN = "http://cran.rstudio.com/"))' > ~/.Rprofile
+          echo "Set global CRAN repository to override RSPM"
 
       - name: Deploy Shiny App
         if: steps.check-deploy.outputs.deploy == 'true'
@@ -170,25 +149,25 @@ jobs:
         run: |
           if [ -n "$SHINYAPPS_TOKEN" ] && [ -n "$SHINYAPPS_SECRET" ]; then
             echo "Deploying Shiny app..."
-            cd deploy_temp
             Rscript -e "
-              # Use the clean CRAN environment
+              # Force CRAN repository to override RSPM
+              options(repos = c(CRAN = 'http://cran.rstudio.com/'))
+              
               rsconnect::setAccountInfo(
                 name = 'rrmaximiliano',
                 token = Sys.getenv('SHINYAPPS_TOKEN'),
                 secret = Sys.getenv('SHINYAPPS_SECRET')
               )
               
-              # Deploy from clean directory with CRAN sources
+              # Deploy with CRAN sources
               rsconnect::deployApp(
-                appDir = '.',
+                appDir = 'deploy_temp',
                 appName = 'inide-canasta-basica',
                 forceUpdate = TRUE,
                 launch.browser = FALSE,
                 envManagement = FALSE
               )
             "
-            cd ..
             echo "✅ Shiny app deployed successfully"
           else
             echo "❌ Shiny deployment credentials not found, skipping deployment"
