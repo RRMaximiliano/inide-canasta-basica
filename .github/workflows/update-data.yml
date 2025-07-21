@@ -48,6 +48,7 @@ jobs:
             any::glue
             any::readxl
             any::rvest
+            any::lubridate
 
       - name: Run data update script
         run: |
