@@ -18,8 +18,19 @@ library(rvest)
 
 clean_canasta_data <- function(data) {
   cleaned_data <- data %>% 
-    # Rename bien to good for consistency
-    rename(good = bien) %>% 
+    # Handle column naming - ensure we have 'good' column
+    {
+      if("bien" %in% names(.) && !"good" %in% names(.)) {
+        # Case 1: Only 'bien' exists, rename it to 'good'
+        rename(., good = bien)
+      } else if("bien" %in% names(.) && "good" %in% names(.)) {
+        # Case 2: Both exist, remove 'bien' and keep 'good'
+        select(., -bien)
+      } else {
+        # Case 3: Only 'good' exists or neither exists
+        .
+      }
+    } %>% 
     
     # Set proper factor levels for months
     mutate(
@@ -322,7 +333,9 @@ cat("Combined dataset now has", nrow(all_data), "rows\n")
 
 # Apply data cleaning
 cat("Applying data cleaning...\n")
+cat("Column names before cleaning:", paste(names(all_data), collapse = ", "), "\n")
 all_data_cleaned <- clean_canasta_data(all_data)
+cat("Column names after cleaning:", paste(names(all_data_cleaned), collapse = ", "), "\n")
 
 # Export updated full dataset (both raw and cleaned versions)
 cat("Saving updated datasets...\n")
