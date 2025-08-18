@@ -13,6 +13,7 @@ library(lubridate)
 library(glue)
 library(readxl)
 library(rvest)
+library(haven)
 
 # Data cleaning function ------------------------------------------------
 
