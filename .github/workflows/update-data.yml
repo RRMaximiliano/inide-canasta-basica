@@ -51,6 +51,7 @@ jobs:
             any::rvest
             any::renv
             any::lubridate
+            any::haven
 
       - name: Run data update script
         run: |
