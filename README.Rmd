@@ -10,7 +10,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-library(tidyverse)
+library(dplyr)
+library(readr)
 library(lubridate)
 
 canasta_basica <- read_rds("data/CB_FULL.rds")
@@ -133,23 +134,6 @@ knitr::include_graphics("figures/queso_seco.png")
 - ✅ **Interactivo**: Aplicación web para exploración de datos
 - ✅ **Múltiples formatos**: Archivos RDS, CSV y Stata disponibles
 - ✅ **Código abierto**: Todo el código disponible en GitHub
-
-## 🛠 Para desarrolladores
-
-**Ejecutar localmente:**
-
-```r
-# Obtener datos más recientes
-Rscript 02_scrape_auto.R
-
-# Lanzar aplicación Shiny
-shiny::runApp("app.R")
-```
-
-**Funciones principales:**
-- Recolección de datos: `02_scrape_auto.R`
-- Limpieza de datos: Integrada en el recolector
-- Visualización: `app.R`
 
 ## 📈 Impacto
 
