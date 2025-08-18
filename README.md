@@ -18,11 +18,11 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 **🌐 Aplicación en vivo**: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
 
-**📊 Datos actuales** (actualizado: 2025-07-20):
-- **Cobertura**: Sep 2007 - Jun 2025
-- **Registros**: 11,342 observaciones
-- **Bienes**: 53 artículos únicos (limpios y estandarizados)
-- **Costo actual**: C$ 20,487 (+0.1% vs mes anterior)
+**📊 Datos actuales** (actualizado: 2025-08-18):
+- **Cobertura**: Sep 2007 - Jul 2025
+- **Registros**: 11,395 observaciones
+- **Bienes**: 54 artículos únicos (limpios y estandarizados)
+- **Costo actual**: C$ 20,550 (+0.3% vs mes anterior)
 
 **🔄 Actualización automática**: Este repositorio se actualiza automáticamente cada mes el día 15 mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. 
 
@@ -31,7 +31,7 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 ``` r
 canasta_basica
-#> # A tibble: 11,342 × 12
+#> # A tibble: 11,395 × 12
 #>    yymm       year month url      row   good  medida cantidad precio total    id
 #>    <glue>    <dbl> <fct> <chr>    <chr> <chr> <chr>     <dbl>  <dbl> <dbl> <dbl>
 #>  1 CB2007Sep  2007 Sep   https:/… 1     Arroz libra        38   6.09  231.     1
@@ -44,7 +44,7 @@ canasta_basica
 #>  8 CB2007Sep  2007 Sep   https:/… 8     Chul… libra         9  35.6   320.     1
 #>  9 CB2007Sep  2007 Sep   https:/… 9     Leche litro        30  10.5   315      1
 #> 10 CB2007Sep  2007 Sep   https:/… 10    Huev… docena        7  21.4   150.     1
-#> # ℹ 11,332 more rows
+#> # ℹ 11,385 more rows
 #> # ℹ 1 more variable: ym <date>
 ```
 
@@ -54,6 +54,7 @@ canasta_basica
 
 |  Año|Mes |Costo Total |
 |----:|:---|:-----------|
+| 2025|Jul |C$ 20,550   |
 | 2025|Jun |C$ 20,487   |
 | 2025|May |C$ 20,457   |
 | 2025|Abr |C$ 20,303   |
@@ -65,7 +66,6 @@ canasta_basica
 | 2024|Oct |C$ 19,942   |
 | 2024|Sep |C$ 20,018   |
 | 2024|Ago |C$ 20,559   |
-| 2024|Jul |C$ 21,019   |
 
 
 
@@ -75,7 +75,7 @@ Cada base de datos contiene las siguientes variables:
 * `year`: Año.
 * `month`: Mes.
 * `url`: URL de descarga de la página oficial del INIDE.
-* `row`: ID del bien. En total se encuentran 53 bienes.
+* `row`: ID del bien. En total se encuentran 54 bienes.
 * `good`: Nombre del bien (limpio y estandarizado).
 * `medida`: Medida oficial de consumo.
 * `cantidad`: Cantidad de consumo (en medida).
@@ -86,16 +86,7 @@ Cada base de datos contiene las siguientes variables:
 
 ## Ejemplos
 
-<div class="figure">
-<img src="figures/canasta_basica.png" alt="plot of chunk unnamed-chunk-4" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-4</p>
-</div><div class="figure">
-<img src="figures/arroz.png" alt="plot of chunk unnamed-chunk-4" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-4</p>
-</div><div class="figure">
-<img src="figures/queso_seco.png" alt="plot of chunk unnamed-chunk-4" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-4</p>
-</div>
+![plot of chunk unnamed-chunk-4](figures/canasta_basica.png)![plot of chunk unnamed-chunk-4](figures/arroz.png)![plot of chunk unnamed-chunk-4](figures/queso_seco.png)
 
 ## 📁 Estructura del Proyecto
 
@@ -128,23 +119,6 @@ Cada base de datos contiene las siguientes variables:
 - ✅ **Múltiples formatos**: Archivos RDS, CSV y Stata disponibles
 - ✅ **Código abierto**: Todo el código disponible en GitHub
 
-## 🛠 Para desarrolladores
-
-**Ejecutar localmente:**
-
-```r
-# Obtener datos más recientes
-Rscript 02_scrape_auto.R
-
-# Lanzar aplicación Shiny
-shiny::runApp("app.R")
-```
-
-**Funciones principales:**
-- Recolección de datos: `02_scrape_auto.R`
-- Limpieza de datos: Integrada en el recolector
-- Visualización: `app.R`
-
 ## 📈 Impacto
 
 Este proyecto proporciona a investigadores, formuladores de políticas y ciudadanos:
@@ -163,4 +137,4 @@ Para comentarios, sugerencias o contribuciones:
 
 ---
 
-*Mantenido por @RRMaximiliano | Última actualización: 2025-07-20*
+*Mantenido por @RRMaximiliano | Última actualización: 2025-08-18*
