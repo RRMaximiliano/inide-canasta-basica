@@ -37,3 +37,6 @@ vignettes/*.pdf
 
 # macOS system files
 .DS_Store
+
+# rsconnect deployment files
+rsconnect/
