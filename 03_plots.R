@@ -172,7 +172,7 @@ cat("✅ Total Canasta Básica plot saved\n")
 
 # Summary -----------------------------------------------------------------
 
-cat("\n🎨 Plot generation completed successfully!\n")
-cat("📊 Generated plots with data range:", date_range, "\n")
-cat("📁 All plots saved to figures/ directory\n")
-cat("🔄 Plots are ready for README.md\n")
+cat("Plot generation completed successfully!\n")
+cat("Generated plots with data range:", date_range, "\n")
+cat("All plots saved to figures/ directory\n")
+cat("Plots are ready for README.md\n")

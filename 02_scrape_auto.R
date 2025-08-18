@@ -100,7 +100,7 @@ clean_canasta_data <- function(data) {
     # Remove the temporary rowid column
     select(-rowid)
   
-  return(cleaned_data)
+  cleaned_data
 }
 
 # Function to scrape available URLs from the website ---------------------
@@ -149,11 +149,11 @@ get_available_urls <- function() {
       arrange(year, match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
                                    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))
     
-    return(url_data)
+    url_data
     
   }, error = function(e) {
     cat("Error scraping website:", e$message, "\n")
-    return(tibble())
+      tibble()
   })
 }
 
@@ -169,9 +169,9 @@ get_existing_data_info <- function() {
       arrange(year, match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
                                    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))
     
-    return(existing_info)
+    existing_info
   } else {
-    return(tibble(year = numeric(), month = character(), url = character()))
+    tibble(year = numeric(), month = character(), url = character())
   }
 }
 
@@ -224,7 +224,7 @@ get_data_safe <- function(url) {
     # Clean up temp file
     unlink(temp_xls)
     
-    return(temp)
+    temp
     
   }, error = function(e) {
     cat("Error processing", url, ":", e$message, "\n")
