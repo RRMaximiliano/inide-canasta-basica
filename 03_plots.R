@@ -8,7 +8,6 @@ library(dplyr)
 library(readr)
 library(ggplot2)
 library(lubridate)
-library(hrbrthemes)
 library(glue)
 library(scales)
 
@@ -47,7 +46,7 @@ arroz_plot <- df %>%
     )
   ) +
   geom_line(color = "#2E86AB", linewidth = 1.2) +
-  theme_ipsum_rc() +
+  theme_minimal(base_size = 12) +
   labs(
     x = "",
     y = "Precio en Córdobas",
@@ -92,7 +91,7 @@ queso_plot <- df %>%
     )
   ) +
   geom_line(color = "#A23B72", linewidth = 1.2) +
-  theme_ipsum_rc() +
+  theme_minimal(base_size = 12) +
   labs(
     x = "",
     y = "Precio en Córdobas",
@@ -148,7 +147,7 @@ total_plot <- df %>%
     caption = "Fuente: INIDE | Plot: @rrmaximiliano"
   ) +
   scale_y_continuous(labels = comma_format()) +
-  theme_ipsum_rc() +
+  theme_minimal(base_size = 12) +
   theme(
     axis.text.x = element_text(size = 12),
     axis.text.y = element_text(size = 12),

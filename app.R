@@ -6,7 +6,6 @@ library(ggplot2)
 library(lubridate)
 library(forcats)
 library(stringr)
-library(hrbrthemes)
 library(bslib)
 library(scales)
 library(DT)
@@ -144,7 +143,7 @@ server <- function(input, output, session) {
         subtitle = subtitle_lab,
         caption = "Fuente: INIDE | Plot: @rrmaximiliano"
       ) +
-      theme_ipsum_rc() +
+      theme_minimal(base_size = 14) +
       theme(
         axis.text.x = element_text(size = 16),
         axis.text.y = element_text(size = 16),
@@ -206,7 +205,7 @@ server <- function(input, output, session) {
         caption = "Fuente: INIDE | Plot: @rrmaximiliano"
       ) +
       scale_y_continuous(labels = comma) +
-      theme_ipsum_rc() +
+      theme_minimal(base_size = 14) +
       theme(
         axis.text.x = element_text(size = 16),
         axis.text.y = element_text(size = 16),

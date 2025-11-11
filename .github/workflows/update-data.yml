@@ -38,7 +38,6 @@ jobs:
             any::lubridate
             any::forcats
             any::stringr
-            any::hrbrthemes
             any::bslib
             any::scales
             any::DT
@@ -50,8 +49,8 @@ jobs:
             any::readxl
             any::rvest
             any::renv
-            any::lubridate
             any::haven
+            any::systemfonts
 
       - name: Run data update script
         run: |
@@ -137,7 +136,7 @@ jobs:
             # Install all required packages including dependencies
             renv::install(c(
               'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 
-              'hrbrthemes', 'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect'
+              'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect', 'systemfonts'
             ))
             renv::snapshot()
           "
