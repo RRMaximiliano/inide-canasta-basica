@@ -25,7 +25,8 @@ clean_canasta_data <- function(data) {
         # Case 1: Only 'bien' exists, rename it to 'good'
         rename(., good = bien)
       } else if("bien" %in% names(.) && "good" %in% names(.)) {
-        # Case 2: Both exist, remove 'bien' and keep 'good'
+        # Case 2: Both exist, merge them (coalesce to get non-NA values from either)
+        mutate(., good = coalesce(good, bien)) %>%
         select(., -bien)
       } else {
         # Case 3: Only 'good' exists or neither exists
@@ -319,9 +320,17 @@ clean_new_df_list %>%
   )
 
 # Load existing data and combine
-if(file.exists("data/CB_FULL.rds")) {
-  cat("Loading existing data...\n")
-  old_data <- read_rds("data/CB_FULL.rds")
+# IMPORTANT: Load the RAW version to avoid column name mismatches
+if(file.exists("data/CB_FULL_raw.rds")) {
+  cat("Loading existing raw data...\n")
+  old_data <- read_rds("data/CB_FULL_raw.rds")
+  
+  # Ensure both old and new data have the same column structure
+  # Rename 'good' to 'bien' in old data if needed to match new data structure
+  if("good" %in% names(old_data) && !"bien" %in% names(old_data)) {
+    cat("Renaming 'good' to 'bien' in old data for consistency...\n")
+    old_data <- old_data %>% rename(bien = good)
+  }
   
   # Combine old and new data
   all_data <- old_data %>% 
