@@ -1,4 +1,3 @@
-
 # Automated plot generation for Nicaragua Canasta Básica
 # This script generates figures used in README.md with dynamic dates
 
@@ -19,9 +18,11 @@ df <- read_rds("data/CB_FULL.rds")
 min_year <- min(df$year)
 max_year <- max(df$year)
 min_month <- df$month[df$year == min_year][1]
-max_month_data <- df %>% 
-  filter(year == max_year) %>% 
-  slice_tail(n = 1)
+max_month_data <- df %>%
+  filter(year == max_year) %>%
+  arrange(desc(match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))) %>%
+  slice(1)
 max_month <- max_month_data$month
 
 # Create dynamic subtitle
@@ -33,12 +34,12 @@ cat("Generating plots with date range:", date_range, "\n")
 
 cat("Generating Arroz plot...\n")
 
-arroz_plot <- df %>% 
-  filter(good == "Arroz") %>% 
+arroz_plot <- df %>%
+  filter(good == "Arroz") %>%
   mutate(
     ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
-  ) %>% 
+  ) %>%
   ggplot(
     aes(
       x = ym,
@@ -78,12 +79,12 @@ cat("✅ Arroz plot saved\n")
 
 cat("Generating Queso Seco plot...\n")
 
-queso_plot <- df %>% 
-  filter(good == "Queso seco") %>% 
+queso_plot <- df %>%
+  filter(good == "Queso seco") %>%
   mutate(
     ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
-  ) %>% 
+  ) %>%
   ggplot(
     aes(
       x = ym,
@@ -122,16 +123,16 @@ cat("✅ Queso Seco plot saved\n")
 
 cat("Generating Total Canasta Básica plot...\n")
 
-total_plot <- df %>% 
-  group_by(year, month) %>% 
+total_plot <- df %>%
+  group_by(year, month) %>%
   summarize(
     sum = sum(total, na.rm = TRUE),
     .groups = "drop"
-  ) %>% 
+  ) %>%
   mutate(
     ym = paste0(year, "-", as.numeric(month)),
     ym = ym(ym)
-  ) %>% 
+  ) %>%
   ggplot(
     aes(
       x = ym,
@@ -168,10 +169,3 @@ ggsave(
 )
 
 cat("✅ Total Canasta Básica plot saved\n")
-
-# Summary -----------------------------------------------------------------
-
-cat("Plot generation completed successfully!\n")
-cat("Generated plots with data range:", date_range, "\n")
-cat("All plots saved to figures/ directory\n")
-cat("Plots are ready for README.md\n")

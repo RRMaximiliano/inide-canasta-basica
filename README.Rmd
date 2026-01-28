@@ -20,9 +20,11 @@ canasta_basica <- read_rds("data/CB_FULL.rds")
 min_year <- min(canasta_basica$year)
 max_year <- max(canasta_basica$year)
 min_month <- canasta_basica$month[canasta_basica$year == min_year][1]
-max_month_data <- canasta_basica %>% 
-  filter(year == max_year) %>% 
-  slice_tail(n = 1)
+max_month_data <- canasta_basica %>%
+  filter(year == max_year) %>%
+  arrange(desc(match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))) %>%
+  slice(1)
 max_month <- max_month_data$month
 total_goods <- length(unique(canasta_basica$good))
 
@@ -31,8 +33,10 @@ recent_data <- canasta_basica %>%
   filter(year >= max_year - 1) %>%
   group_by(year, month) %>%
   summarise(total_cost = sum(total, na.rm = TRUE), .groups = "drop") %>%
-  arrange(desc(year), desc(match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
-                                          "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"))))
+  arrange(desc(year), desc(match(month, c(
+    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+  ))))
 
 latest_cost <- recent_data$total_cost[1]
 previous_cost <- recent_data$total_cost[2]
@@ -48,21 +52,21 @@ last_update <- Sys.Date()
 [![Data Update](https://github.com/RRMaximiliano/inide-canasta-basica/actions/workflows/update-data.yml/badge.svg)](https://github.com/RRMaximiliano/inide-canasta-basica/actions/workflows/update-data.yml)
 <!-- badges: end -->
 
-## 🎯 Qué hace este proyecto
+## Qué hace este proyecto
 
 Recolecta y visualiza automáticamente los datos de precios de la canasta básica de Nicaragua desde el sitio web oficial del INIDE.
 
-**🌐 Aplicación en vivo**: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
+**Aplicación en vivo**: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
 
-**📊 Datos actuales** (actualizado: `r last_update`):
+**Datos actuales** (actualizado: `r last_update`):
 - **Cobertura**: `r min_month` `r min_year` - `r max_month` `r max_year`
 - **Registros**: `r format(nrow(canasta_basica), big.mark = ",")` observaciones
 - **Bienes**: `r total_goods` artículos únicos (limpios y estandarizados)
 - **Costo actual**: C$ `r format(round(latest_cost, 0), big.mark = ",")` (`r if(cost_change > 0) paste0("+", cost_change) else cost_change`% vs mes anterior)
 
-**🔄 Actualización automática**: Este repositorio se actualiza automáticamente cada mes el día 15 mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. 
+**Actualización automática**: Este repositorio se actualiza automáticamente cada mes el día 15 mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. 
 
-## 📈 Vista de los datos
+## Vista de los datos
 
 ```{r}
 canasta_basica
@@ -104,7 +108,7 @@ knitr::include_graphics("figures/arroz.png")
 knitr::include_graphics("figures/queso_seco.png")
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 ├── 01_files.R              # Configuración de URLs para datos históricos
@@ -119,32 +123,23 @@ knitr::include_graphics("figures/queso_seco.png")
 └── .github/workflows/       # Automatización GitHub Actions
 ```
 
-## 🔄 Cómo funciona
+## Cómo funciona
 
 1. **Automatización mensual**: GitHub Actions se ejecuta el día 15 de cada mes
 2. **Detección inteligente**: Solo descarga datos nuevos del sitio web del INIDE
 3. **Limpieza de datos**: Estandariza automáticamente nombres de bienes y corrige inconsistencias
 4. **Actualización de app**: La aplicación Shiny muestra los datos más recientes automáticamente
 
-## 🚀 Características principales
+## Características principales
 
-- ✅ **Completamente automatizado**: No requiere intervención manual
-- ✅ **Calidad de datos**: Nomenclatura consistente y validación
-- ✅ **Siempre actualizado**: Se actualiza mensualmente con los datos más recientes
-- ✅ **Interactivo**: Aplicación web para exploración de datos
-- ✅ **Múltiples formatos**: Archivos RDS, CSV y Stata disponibles
-- ✅ **Código abierto**: Todo el código disponible en GitHub
+- **Completamente automatizado**: No requiere intervención manual
+- **Calidad de datos**: Nomenclatura consistente y validación
+- **Siempre actualizado**: Se actualiza mensualmente con los datos más recientes
+- **Interactivo**: Aplicación web para exploración de datos
+- **Múltiples formatos**: Archivos RDS, CSV y Stata disponibles
+- **Código abierto**: Todo el código disponible en GitHub
 
-## 📈 Impacto
-
-Este proyecto proporciona a investigadores, formuladores de políticas y ciudadanos:
-
-- Tendencias históricas de precios de bienes básicos
-- Recolección automatizada de datos de fuentes oficiales
-- Herramientas interactivas para análisis económico
-- Acceso abierto a datos limpios y estandarizados
-
-## 📞 Contacto y contribuciones
+## Contacto y contribuciones
 
 Para comentarios, sugerencias o contribuciones:
 - **Email**: rodriguezramirez@worldbank.org
