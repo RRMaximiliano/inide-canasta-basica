@@ -331,9 +331,14 @@ if(file.exists("data/CB_FULL_raw.rds")) {
     cat("Renaming 'good' to 'bien' in old data for consistency...\n")
     old_data <- old_data %>% rename(bien = good)
   }
-  
+
+  # Ensure consistent column types before binding
+  # The 'row' column may be numeric in old data but character in new Excel data
+  old_data <- old_data %>% mutate(row = as.character(row))
+  clean_new_df <- clean_new_df %>% mutate(row = as.character(row))
+
   # Combine old and new data
-  all_data <- old_data %>% 
+  all_data <- old_data %>%
     bind_rows(clean_new_df)
 } else {
   all_data <- clean_new_df
