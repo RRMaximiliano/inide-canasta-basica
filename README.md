@@ -20,10 +20,10 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 **Datos actuales** (actualizado: 2026-06-12):
 - **Cobertura**: Sep 2007 - Abr 2026
-- **Registros**: 11,819 observaciones
+- **Registros**: 11,872 observaciones
 - **Bienes**: 53 artículos únicos (limpios y estandarizados)
 - **Categorías**: 3 grupos oficiales (Alimentos, Usos del Hogar, Vestuario)
-- **Costo actual**: C$ 21,246 (+0.4% vs mes anterior)
+- **Costo actual**: C$ 21,246 (+0.6% vs mes anterior)
 
 **Actualización automática**: Este repositorio se actualiza automáticamente cada semana (los lunes) mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. Cuando hay un mes nuevo, se recompila el dataset, se regeneran las figuras y se redespliega la aplicación Shiny.
 
@@ -32,7 +32,7 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 ``` r
 canasta_basica
-#> # A tibble: 11,819 × 17
+#> # A tibble: 11,872 × 17
 #>    yymm       year month url      row   good  medida cantidad precio total    id
 #>    <glue>    <dbl> <fct> <chr>    <chr> <chr> <chr>     <dbl>  <dbl> <dbl> <dbl>
 #>  1 CB2007Dic  2007 Dic   https:/… 1     Arroz libra        38   7.12  270.     4
@@ -45,7 +45,7 @@ canasta_basica
 #>  8 CB2007Dic  2007 Dic   https:/… 8     Chul… libra         9  35.4   319.     4
 #>  9 CB2007Dic  2007 Dic   https:/… 9     Leche litro        30  11.9   356.     4
 #> 10 CB2007Dic  2007 Dic   https:/… 10    Huev… docena        7  26.1   183.     4
-#> # ℹ 11,809 more rows
+#> # ℹ 11,862 more rows
 #> # ℹ 6 more variables: ym <date>, categoria <fct>, ipc <dbl>,
 #> #   ipc_estimado <lgl>, precio_real <dbl>, total_real <dbl>
 ```
@@ -57,6 +57,7 @@ canasta_basica
 |  Año|Mes |Costo Total (nominal) |Costo Total (real) |
 |----:|:---|:---------------------|:------------------|
 | 2026|Abr |C$ 21,246             |C$ 20,875          |
+| 2026|Mar |C$ 21,120             |C$ 20,752          |
 | 2026|Feb |C$ 21,164             |C$ 20,795          |
 | 2026|Ene |C$ 21,250             |C$ 20,879          |
 | 2025|Dic |C$ 20,822             |C$ 20,458          |
@@ -67,7 +68,6 @@ canasta_basica
 | 2025|Jul |C$ 20,550             |C$ 20,191          |
 | 2025|Jun |C$ 20,487             |C$ 20,130          |
 | 2025|May |C$ 20,457             |C$ 20,074          |
-| 2025|Abr |C$ 20,303             |C$ 19,959          |
 
 
 

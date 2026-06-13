@@ -41,10 +41,16 @@ get_available_urls <- function() {
     url_data <- tibble(url = full_urls) %>%
       mutate(
         filename = str_extract(url, "CB[^/]+\\.(xls|xlsx)$"),
-        year = as.numeric(str_extract(filename, "\\d{4}")),
-        month_raw = str_extract(filename, "CB([A-Za-z_]+)\\d{4}") %>%
-          str_remove("CB") %>%
-          str_remove("\\d{4}") %>%
+        # Year comes from the /CB{YYYY}/ directory in the path, which is always
+        # 4 digits - far more reliable than the filename, where INIDE uses 2- or
+        # 4-digit years inconsistently (e.g. CBMar26.xlsx vs CBFeb2026.xlsx).
+        year = as.numeric(str_extract(str_extract(url, "/CB(\\d{4})/"), "\\d{4}")),
+        # Month = the letters between the CB/C prefix and the trailing year
+        # digits, tolerant of 2- or 4-digit years and full/abbreviated names.
+        month_raw = filename %>%
+          str_remove("\\.(xls|xlsx)$") %>%
+          str_remove("^CB?") %>%
+          str_remove("\\d+$") %>%
           str_remove("_"),
         month = case_when(
           str_detect(month_raw, "Ene|ene") ~ "Ene",
