@@ -14,95 +14,11 @@ library(glue)
 library(readxl)
 library(rvest)
 library(haven)
+library(jsonlite)
 
-# Data cleaning function ------------------------------------------------
-
-clean_canasta_data <- function(data) {
-  cleaned_data <- data %>% 
-    # Handle column naming - ensure we have 'good' column
-    {
-      if("bien" %in% names(.) && !"good" %in% names(.)) {
-        # Case 1: Only 'bien' exists, rename it to 'good'
-        rename(., good = bien)
-      } else if("bien" %in% names(.) && "good" %in% names(.)) {
-        # Case 2: Both exist, merge them (coalesce to get non-NA values from either)
-        mutate(., good = coalesce(good, bien)) %>%
-        select(., -bien)
-      } else {
-        # Case 3: Only 'good' exists or neither exists
-        .
-      }
-    } %>% 
-    
-    # Set proper factor levels for months
-    mutate(
-      month = fct_relevel(
-        month, 
-        "Ene", "Feb", "Mar", "Abr", "May", "Jun", 
-        "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
-      )
-    ) %>%
-    
-    # Clean good names and standardize variations
-    mutate(
-      good = str_squish(good),
-      good = case_when(
-        str_detect(good, "Brassier") ~ "Brassier/sostén",
-        str_detect(good, "Desodorante") ~ "Desodorante nacional",
-        str_detect(good, "Pasta dental") ~ "Pasta dental",
-        str_detect(good, "Pastas dental") ~ "Pasta dental",
-        str_detect(good, "cuero natural") ~ "Zapato de cuero natural",
-        # Consolidate duplicate goods to get to 53 unique items
-        str_detect(good, "Detergente en polvo") ~ "Detergente",
-        str_detect(good, "^Detergente$") ~ "Detergente",
-        str_detect(good, "Jabón de lavar ropa") ~ "Jabón de lavar ropa",
-        str_detect(good, "^Jabón de lavar$") ~ "Jabón de lavar ropa",
-        str_detect(good, "Leche fluída") ~ "Leche",
-        str_detect(good, "^Leche$") ~ "Leche",
-        str_detect(good, "Chuleta de pescado") ~ "Chuleta de pescado",
-        str_detect(good, "^Pescado$") ~ "Chuleta de pescado",
-        TRUE ~ good
-      )
-    ) %>% 
-    
-    # Create year-month variable for grouping
-    mutate(
-      ym = paste0(year, "-", as.numeric(month)),
-      ym = ym(ym)
-    ) %>% 
-    
-    # Add row ID within each month for specific item disambiguation
-    group_by(ym) %>% 
-    mutate(
-      rowid = row_number()
-    ) %>% 
-    ungroup() %>% 
-    
-    # Disambiguate items that appear multiple times with different specifications
-    mutate(
-      good = case_when(
-        good == "Calcetines" & rowid == 42 ~ "Calcetines (Hombre)",
-        good == "Calcetines" & rowid == 52 ~ "Calcetines (Niños y Niñas)",
-        good == "Pantalón largo de tela de jeans" & rowid == 39 ~ "Pantalón largo de tela de jeans (Hombre)",
-        good == "Pantalón largo de tela de jeans" & rowid == 45 ~ "Pantalón largo de tela de jeans (Mujeres)",
-        TRUE ~ good
-      )
-    ) %>% 
-    
-    # Clean medida and handle special cases for precio
-    mutate(
-      medida = str_to_lower(medida),
-      precio = case_when(
-        is.na(precio) & good == "Alquiler" ~ total, 
-        TRUE ~ precio
-      )
-    ) %>%
-    
-    # Remove the temporary rowid column
-    select(-rowid)
-  
-  cleaned_data
-}
+# Data compilation (single source of truth) -------------------------------
+# Cleaning, category assignment and real-price deflation all live in R/.
+source("R/compile_canasta.R")
 
 # Function to scrape available URLs from the website ---------------------
 
@@ -118,8 +34,8 @@ get_available_urls <- function() {
       str_subset("\\.(xls|xlsx)$") %>%
       unique()
     
-    # Convert relative URLs to absolute
-    full_urls <- paste0("https://www.inide.gob.ni", links)
+    # Convert relative URLs to absolute (no-op for already-absolute hrefs)
+    full_urls <- xml2::url_absolute(links, "https://www.inide.gob.ni/")
     
     # Extract year and month from URLs
     url_data <- tibble(url = full_urls) %>%
@@ -146,8 +62,12 @@ get_available_urls <- function() {
           TRUE ~ month_raw
         )
       ) %>%
-      filter(!is.na(year), !is.na(month)) %>%
-      arrange(year, match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun", 
+      filter(
+        !is.na(year),
+        month %in% c("Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                     "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
+      ) %>%
+      arrange(year, match(month, c("Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")))
     
     url_data
@@ -346,11 +266,11 @@ if(file.exists("data/CB_FULL_raw.rds")) {
 
 cat("Combined dataset now has", nrow(all_data), "rows\n")
 
-# Apply data cleaning
-cat("Applying data cleaning...\n")
-cat("Column names before cleaning:", paste(names(all_data), collapse = ", "), "\n")
-all_data_cleaned <- clean_canasta_data(all_data)
-cat("Column names after cleaning:", paste(names(all_data_cleaned), collapse = ", "), "\n")
+# Compile: clean + assign categories + deflate to real prices
+cat("Compiling dataset (clean + categories + real prices)...\n")
+cat("Column names before compiling:", paste(names(all_data), collapse = ", "), "\n")
+all_data_cleaned <- compile_canasta(all_data)
+cat("Column names after compiling:", paste(names(all_data_cleaned), collapse = ", "), "\n")
 
 # Export updated full dataset (both raw and cleaned versions)
 cat("Saving updated datasets...\n")
@@ -385,7 +305,9 @@ all_data_cleaned %>%
   )
 
 cat("Data update completed successfully!\n")
-latest_year <- max(all_data$year)
-latest_months <- all_data$month[all_data$year == latest_year]
-latest_month <- latest_months[length(latest_months)]
-cat("Latest data point:", latest_year, latest_month, "\n")
+month_levels <- c("Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
+latest <- all_data_cleaned[order(all_data_cleaned$year,
+                                 match(as.character(all_data_cleaned$month), month_levels)), ]
+cat("Latest data point:", tail(latest$year, 1),
+    as.character(tail(latest$month, 1)), "\n")

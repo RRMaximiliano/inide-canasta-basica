@@ -1,9 +1,13 @@
 name: Update Canasta Básica Data
 
+permissions:
+  contents: write
+
 on:
   schedule:
-    # Run on the 15th of each month at 10:00 AM UTC
-    - cron: "0 10 15 * *"
+    # Run every Monday at 10:00 AM UTC; the scrape script exits early
+    # via no_data_changes.flag when INIDE has not published a new month
+    - cron: "0 10 * * 1"
   workflow_dispatch: # Allow manual triggering for testing
 
 jobs:
@@ -51,10 +55,16 @@ jobs:
             any::renv
             any::haven
             any::systemfonts
+            any::jsonlite
+            any::tidyr
 
       - name: Run data update script
         run: |
           Rscript 02_scrape_auto.R
+
+      - name: Validate data
+        run: |
+          Rscript scripts/validate_data.R
 
       - name: Check if data changed
         id: check-data-changes
@@ -106,17 +116,17 @@ jobs:
       - name: Check if app deployment needed
         id: check-deploy
         run: |
-          # Always deploy on scheduled runs to keep app current
-          # Always deploy on manual runs (regardless of data changes)
-          if [ "${{ github.event_name }}" == "schedule" ]; then
+          # Manual runs always deploy (to ship app-code changes).
+          # Scheduled runs deploy only when new data was committed.
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "deploy=true" >> $GITHUB_OUTPUT
-            echo "Deploying: Monthly scheduled run - keeping app current"
-          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Deploying: manual run"
+          elif [ "${{ steps.check-data-changes.outputs.data_changed }}" == "true" ]; then
             echo "deploy=true" >> $GITHUB_OUTPUT
-            echo "Deploying: Manual run - always deploy when manually triggered"
+            echo "Deploying: new data this run"
           else
             echo "deploy=false" >> $GITHUB_OUTPUT
-            echo "Skipping deployment: Unknown trigger"
+            echo "Skipping deployment: no new data"
           fi
 
       - name: Prepare deployment directory with renv
@@ -146,11 +156,19 @@ jobs:
 
       - name: Deploy to shinyapps.io
         if: steps.check-deploy.outputs.deploy == 'true'
+        env:
+          SHINYAPPS_NAME: rrmaximiliano
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
         run: |
           # Install rsconnect globally
           Rscript -e "
             install.packages('rsconnect', repos = 'https://cloud.r-project.org/')
-            rsconnect::setAccountInfo(name='rrmaximiliano', token='${{secrets.SHINYAPPS_TOKEN}}', secret='${{secrets.SHINYAPPS_SECRET}}')
+            rsconnect::setAccountInfo(
+              name   = Sys.getenv('SHINYAPPS_NAME'),
+              token  = Sys.getenv('SHINYAPPS_TOKEN'),
+              secret = Sys.getenv('SHINYAPPS_SECRET')
+            )
           "
 
           # Deploy with renv
