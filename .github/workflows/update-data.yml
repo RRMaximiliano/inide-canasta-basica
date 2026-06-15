@@ -145,8 +145,8 @@ jobs:
             renv::init(bare = TRUE)
             # Install all required packages including dependencies
             renv::install(c(
-              'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr', 
-              'bslib', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect', 'systemfonts'
+              'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr',
+              'bslib', 'bsicons', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect', 'systemfonts'
             ))
             renv::snapshot()
           "
