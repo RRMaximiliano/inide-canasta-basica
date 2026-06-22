@@ -18,12 +18,12 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 **Aplicación en vivo**: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
 
-**Datos actuales** (actualizado: 2026-06-12):
-- **Cobertura**: Sep 2007 - Abr 2026
-- **Registros**: 11,872 observaciones
+**Datos actuales** (actualizado: 2026-06-22):
+- **Cobertura**: Sep 2007 - May 2026
+- **Registros**: 11,925 observaciones
 - **Bienes**: 53 artículos únicos (limpios y estandarizados)
 - **Categorías**: 3 grupos oficiales (Alimentos, Usos del Hogar, Vestuario)
-- **Costo actual**: C$ 21,246 (+0.6% vs mes anterior)
+- **Costo actual**: C$ 21,373 (+0.6% vs mes anterior)
 
 **Actualización automática**: Este repositorio se actualiza automáticamente cada semana (los lunes) mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. Cuando hay un mes nuevo, se recompila el dataset, se regeneran las figuras y se redespliega la aplicación Shiny.
 
@@ -32,7 +32,7 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 ``` r
 canasta_basica
-#> # A tibble: 11,872 × 17
+#> # A tibble: 11,925 × 17
 #>    yymm       year month url      row   good  medida cantidad precio total    id
 #>    <glue>    <dbl> <fct> <chr>    <chr> <chr> <chr>     <dbl>  <dbl> <dbl> <dbl>
 #>  1 CB2007Dic  2007 Dic   https:/… 1     Arroz libra        38   7.12  270.     4
@@ -45,7 +45,7 @@ canasta_basica
 #>  8 CB2007Dic  2007 Dic   https:/… 8     Chul… libra         9  35.4   319.     4
 #>  9 CB2007Dic  2007 Dic   https:/… 9     Leche litro        30  11.9   356.     4
 #> 10 CB2007Dic  2007 Dic   https:/… 10    Huev… docena        7  26.1   183.     4
-#> # ℹ 11,862 more rows
+#> # ℹ 11,915 more rows
 #> # ℹ 6 more variables: ym <date>, categoria <fct>, ipc <dbl>,
 #> #   ipc_estimado <lgl>, precio_real <dbl>, total_real <dbl>
 ```
@@ -56,6 +56,7 @@ canasta_basica
 
 |  Año|Mes |Costo Total (nominal) |Costo Total (real) |
 |----:|:---|:---------------------|:------------------|
+| 2026|May |C$ 21,373             |C$ 21,000          |
 | 2026|Abr |C$ 21,246             |C$ 20,875          |
 | 2026|Mar |C$ 21,120             |C$ 20,752          |
 | 2026|Feb |C$ 21,164             |C$ 20,795          |
@@ -67,7 +68,6 @@ canasta_basica
 | 2025|Ago |C$ 20,529             |C$ 20,171          |
 | 2025|Jul |C$ 20,550             |C$ 20,191          |
 | 2025|Jun |C$ 20,487             |C$ 20,130          |
-| 2025|May |C$ 20,457             |C$ 20,074          |
 
 
 
@@ -103,38 +103,23 @@ La canasta básica de 53 productos se organiza en los tres grupos oficiales del 
 
 |Categoría      |Costo del grupo |
 |:--------------|:---------------|
-|Alimentos      |C$ 15,207       |
-|Usos del Hogar |C$  3,648       |
-|Vestuario      |C$  2,391       |
+|Alimentos      |C$ 15,328       |
+|Usos del Hogar |C$  3,645       |
+|Vestuario      |C$  2,400       |
 
 
 
-*Desglose del último mes disponible (Abr 2026).*
+*Desglose del último mes disponible (May 2026).*
 
 ## Precios reales (ajustados por inflación)
 
 Los precios nominales no son comparables a lo largo de 18 años: gran parte del aumento refleja inflación general, no encarecimiento real. Por eso el dataset incluye **precios reales** en córdobas constantes de 2024, deflactados con el Índice de Precios al Consumidor (IPC) mensual de Nicaragua publicado por el FMI (International Financial Statistics, base 2010 = 100), obtenido vía la API de DBnomics. Los meses más recientes que aún no tienen IPC oficial usan el último valor disponible (marcados con `ipc_estimado = TRUE`).
 
-<div class="figure">
-<img src="figures/canasta_nominal_real.png" alt="plot of chunk unnamed-chunk-5" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-5</p>
-</div>
+![plot of chunk unnamed-chunk-5](figures/canasta_nominal_real.png)
 
 ## Ejemplos
 
-<div class="figure">
-<img src="figures/canasta_basica.png" alt="plot of chunk unnamed-chunk-6" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-6</p>
-</div><div class="figure">
-<img src="figures/canasta_categoria.png" alt="plot of chunk unnamed-chunk-6" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-6</p>
-</div><div class="figure">
-<img src="figures/arroz.png" alt="plot of chunk unnamed-chunk-6" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-6</p>
-</div><div class="figure">
-<img src="figures/queso_seco.png" alt="plot of chunk unnamed-chunk-6" width="4096" />
-<p class="caption">plot of chunk unnamed-chunk-6</p>
-</div>
+![plot of chunk unnamed-chunk-6](figures/canasta_basica.png)![plot of chunk unnamed-chunk-6](figures/canasta_categoria.png)![plot of chunk unnamed-chunk-6](figures/arroz.png)![plot of chunk unnamed-chunk-6](figures/queso_seco.png)
 
 ## Cómo usar estos datos
 
@@ -219,4 +204,4 @@ Para comentarios, sugerencias o contribuciones:
 
 ---
 
-*Mantenido por @RRMaximiliano | Última actualización: 2026-06-12*
+*Mantenido por @RRMaximiliano | Última actualización: 2026-06-22*
