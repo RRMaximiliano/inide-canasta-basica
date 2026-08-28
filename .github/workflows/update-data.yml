@@ -5,9 +5,9 @@ permissions:
 
 on:
   schedule:
-    # Run every Monday at 10:00 AM UTC; the scrape script exits early
+    # Run on the 20th of each month at 10:00 AM UTC; the scrape script exits early
     # via no_data_changes.flag when INIDE has not published a new month
-    - cron: "0 10 * * 1"
+    - cron: "0 10 20 * *"
   workflow_dispatch: # Allow manual triggering for testing
 
 jobs:
