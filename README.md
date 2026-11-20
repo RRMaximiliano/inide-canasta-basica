@@ -18,12 +18,12 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 **Aplicación en vivo**: https://rrmaximiliano.shinyapps.io/inide-canasta-basica/
 
-**Datos actuales** (actualizado: 2026-08-17):
-- **Cobertura**: Sep 2007 - Jul 2026
-- **Registros**: 12,031 observaciones
+**Datos actuales** (actualizado: 2026-11-20):
+- **Cobertura**: Sep 2007 - Oct 2026
+- **Registros**: 12,084 observaciones
 - **Bienes**: 53 artículos únicos (limpios y estandarizados)
 - **Categorías**: 3 grupos oficiales (Alimentos, Usos del Hogar, Vestuario)
-- **Costo actual**: C$ 21,475 (+0.3% vs mes anterior)
+- **Costo actual**: C$ 21,788 (+1.5% vs mes anterior)
 
 **Actualización automática**: Este repositorio se actualiza automáticamente cada semana (los lunes) mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. Cuando hay un mes nuevo, se recompila el dataset, se regeneran las figuras y se redespliega la aplicación Shiny.
 
@@ -32,7 +32,7 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 
 ``` r
 canasta_basica
-#> # A tibble: 12,031 × 17
+#> # A tibble: 12,084 × 17
 #>    yymm       year month url      row   good  medida cantidad precio total    id
 #>    <glue>    <dbl> <fct> <chr>    <chr> <chr> <chr>     <dbl>  <dbl> <dbl> <dbl>
 #>  1 CB2007Dic  2007 Dic   https:/… 1     Arroz libra        38   7.12  270.     4
@@ -45,7 +45,7 @@ canasta_basica
 #>  8 CB2007Dic  2007 Dic   https:/… 8     Chul… libra         9  35.4   319.     4
 #>  9 CB2007Dic  2007 Dic   https:/… 9     Leche litro        30  11.9   356.     4
 #> 10 CB2007Dic  2007 Dic   https:/… 10    Huev… docena        7  26.1   183.     4
-#> # ℹ 12,021 more rows
+#> # ℹ 12,074 more rows
 #> # ℹ 6 more variables: ym <date>, categoria <fct>, ipc <dbl>,
 #> #   ipc_estimado <lgl>, precio_real <dbl>, total_real <dbl>
 ```
@@ -56,6 +56,7 @@ canasta_basica
 
 |  Año|Mes |Costo Total (nominal) |Costo Total (real) |
 |----:|:---|:---------------------|:------------------|
+| 2026|Oct |C$ 21,788             |C$ 21,407          |
 | 2026|Jul |C$ 21,475             |C$ 21,100          |
 | 2026|Jun |C$ 21,414             |C$ 21,041          |
 | 2026|May |C$ 21,373             |C$ 21,000          |
@@ -67,7 +68,6 @@ canasta_basica
 | 2025|Nov |C$ 20,768             |C$ 20,406          |
 | 2025|Oct |C$ 20,559             |C$ 20,200          |
 | 2025|Sep |C$ 20,594             |C$ 20,235          |
-| 2025|Ago |C$ 20,529             |C$ 20,171          |
 
 
 
@@ -103,13 +103,13 @@ La canasta básica de 53 productos se organiza en los tres grupos oficiales del 
 
 |Categoría      |Costo del grupo |
 |:--------------|:---------------|
-|Alimentos      |C$ 15,425       |
-|Usos del Hogar |C$  3,649       |
-|Vestuario      |C$  2,401       |
+|Alimentos      |C$ 15,717       |
+|Usos del Hogar |C$  3,660       |
+|Vestuario      |C$  2,410       |
 
 
 
-*Desglose del último mes disponible (Jul 2026).*
+*Desglose del último mes disponible (Oct 2026).*
 
 ## Precios reales (ajustados por inflación)
 
@@ -119,7 +119,13 @@ Los precios nominales no son comparables a lo largo de 18 años: gran parte del 
 
 ## Ejemplos
 
-![plot of chunk unnamed-chunk-6](figures/canasta_basica.png)![plot of chunk unnamed-chunk-6](figures/canasta_categoria.png)![plot of chunk unnamed-chunk-6](figures/arroz.png)![plot of chunk unnamed-chunk-6](figures/queso_seco.png)
+![plot of chunk unnamed-chunk-6](figures/canasta_basica.png)
+
+![plot of chunk unnamed-chunk-6](figures/canasta_categoria.png)
+
+![plot of chunk unnamed-chunk-6](figures/arroz.png)
+
+![plot of chunk unnamed-chunk-6](figures/queso_seco.png)
 
 ## Cómo usar estos datos
 
@@ -204,4 +210,4 @@ Para comentarios, sugerencias o contribuciones:
 
 ---
 
-*Mantenido por @RRMaximiliano | Última actualización: 2026-08-17*
+*Mantenido por @RRMaximiliano | Última actualización: 2026-11-20*
