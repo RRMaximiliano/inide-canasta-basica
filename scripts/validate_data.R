@@ -76,13 +76,19 @@ if (any(dup))
 # source gap must not permanently block the automated pipeline.
 mnum <- match(d$month, MONTH_LEVELS)
 idx <- sort(unique(d$year * 12 + (mnum - 1)))
-gap_after <- idx[which(diff(idx) != 1)]
-if (length(gap_after) > 0) {
-  gap_lbl <- vapply(gap_after,
+# Every missing month is also written, one per line, to GAPS_FILE so CI can
+# raise an alert; the file is removed when the series is contiguous.
+GAPS_FILE <- "data_gaps.txt"
+missing_idx <- setdiff(seq(min(idx), max(idx)), idx)
+if (length(missing_idx) > 0) {
+  gap_lbl <- vapply(missing_idx,
                     function(i) sprintf("%s %d", MONTH_LEVELS[i %% 12 + 1], i %/% 12),
                     character(1))
-  note(sprintf("%d gap(s) in the monthly series (missing month after: %s)",
-               length(gap_after), paste(gap_lbl, collapse = ", ")))
+  note(sprintf("%d missing month(s) in the series: %s",
+               length(missing_idx), paste(gap_lbl, collapse = ", ")))
+  writeLines(gap_lbl, GAPS_FILE)
+} else if (file.exists(GAPS_FILE)) {
+  file.remove(GAPS_FILE)
 }
 
 # 8. Strictly positive values (nominal and real)

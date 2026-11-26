@@ -2,6 +2,7 @@ name: Update Canasta Básica Data
 
 permissions:
   contents: write
+  issues: write # open/close the missing-months alert issue
 
 on:
   schedule:
@@ -65,6 +66,38 @@ jobs:
       - name: Validate data
         run: |
           Rscript scripts/validate_data.R
+
+      - name: Alert on missing months
+        # validate_data.R writes data_gaps.txt (one month per line) when the
+        # series has holes. Keep a single open issue in sync with it: create it
+        # when gaps appear, update its body when they change, close it when the
+        # series is contiguous again.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Meses faltantes en los datos del INIDE"
+          issue=$(gh issue list --state open --search "in:title \"$title\"" \
+                    --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -n1)
+          if [ -f data_gaps.txt ]; then
+            {
+              echo "La serie tiene meses sin datos. INIDE no los ha publicado en https://www.inide.gob.ni/Home/canasta (o el scraper no los encontró):"
+              echo
+              sed 's/^/- /' data_gaps.txt
+              echo
+              echo "El pipeline los descargará automáticamente si aparecen en la página. Este issue se cierra solo cuando la serie esté completa."
+              echo
+              echo "Última verificación: $RUN_URL"
+            } > gap_issue.md
+            if [ -z "$issue" ]; then
+              gh issue create --title "$title" --body-file gap_issue.md
+            else
+              gh issue edit "$issue" --body-file gap_issue.md
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "La serie ya no tiene meses faltantes ($RUN_URL)."
+          fi
+          rm -f gap_issue.md data_gaps.txt
 
       - name: Check if data changed
         id: check-data-changes

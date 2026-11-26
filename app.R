@@ -80,6 +80,13 @@ categoria_data <- data %>%
 
 n_months <- nrow(grouped_data)
 
+# The KPI compares against the previous *published* month, which is not the
+# previous calendar month when INIDE skips one, so name it explicitly.
+prev_period_text <- paste(
+  "vs.", as.character(grouped_data$month[n_months - 1]),
+  grouped_data$year[n_months - 1]
+)
+
 price_choices <- c("nominal", "real")
 names(price_choices) <- c("Nominal",
                           paste0("Real (córdobas de ", IPC_BASE_YEAR, ")"))
@@ -216,9 +223,9 @@ ui <- page_sidebar(
     ),
     value_box(
       title = tags$span(tags$span(bs_icon("graph-up-arrow"), class = "kpi-ic"),
-                        "Variación mensual"),
+                        "Variación"),
       value = uiOutput("kpi_change"),
-      "vs. mes anterior"
+      prev_period_text
     ),
     value_box(
       title = tags$span(tags$span(bs_icon("calendar3"), class = "kpi-ic"),

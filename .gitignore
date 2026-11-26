@@ -40,3 +40,4 @@ vignettes/*.pdf
 
 # rsconnect deployment files
 rsconnect/
+data_gaps.txt
