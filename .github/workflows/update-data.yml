@@ -170,6 +170,8 @@ jobs:
           cp app.R deploy_temp/
           mkdir -p deploy_temp/data
           cp data/CB_FULL.rds deploy_temp/data/
+          # Publication date shown in the app ("App publicada")
+          date -u +%Y-%m-%d > deploy_temp/data/build_info.txt
 
           # Initialize renv in deployment directory
           cd deploy_temp
@@ -179,7 +181,7 @@ jobs:
             # Install all required packages including dependencies
             renv::install(c(
               'shiny', 'dplyr', 'readr', 'ggplot2', 'lubridate', 'forcats', 'stringr',
-              'bslib', 'bsicons', 'scales', 'DT', 'cpp11', 'progress', 'vroom', 'rsconnect', 'systemfonts'
+              'bslib', 'bsicons', 'scales', 'DT', 'ggiraph', 'cpp11', 'progress', 'vroom', 'rsconnect', 'systemfonts'
             ))
             renv::snapshot()
           "
