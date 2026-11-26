@@ -64,15 +64,6 @@ the DBnomics API. Falls back to the existing cache if the fetch fails.
 Rscript scripts/update_ipc.R
 ```
 
-### `check_data.R`
-Diagnostic script to verify data integrity and check for issues (print-only,
-does not fail). For automated checks prefer `validate_data.R`.
-
-**Usage:**
-```r
-Rscript scripts/check_data.R
-```
-
 ## Note
 
 The main data processing runs in GitHub Actions via `02_scrape_auto.R`, which
