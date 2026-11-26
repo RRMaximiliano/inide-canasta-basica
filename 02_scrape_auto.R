@@ -174,6 +174,30 @@ if(nrow(available_urls) == 0) {
 
 cat("Found", nrow(available_urls), "files on website\n")
 
+# Sanity check: the year comes from the /CB{YYYY}/ folder. If INIDE misfiles a
+# month into another year's folder it would be stored under the wrong year
+# without any error, so cross-check against the year in the filename (2 or 4
+# digits) and stop loudly on disagreement. Filenames without a trailing year
+# are not checked.
+year_check <- available_urls %>%
+  mutate(
+    file_year_raw = str_extract(str_remove(filename, "\\.(xls|xlsx)$"), "\\d+$"),
+    file_year = case_when(
+      nchar(file_year_raw) == 4 ~ as.numeric(file_year_raw),
+      nchar(file_year_raw) == 2 ~ 2000 + as.numeric(file_year_raw),
+      TRUE ~ NA_real_
+    )
+  ) %>%
+  filter(!is.na(file_year), file_year != year)
+
+if (nrow(year_check) > 0) {
+  cat("ERROR: folder year and filename year disagree for:\n")
+  cat(paste0(" - ", year_check$url, " (folder ", year_check$year,
+             ", filename ", year_check$file_year, ")"), sep = "\n")
+  cat("\nFix the year for these files by hand before ingesting.\n")
+  quit(status = 1)
+}
+
 # Get existing data info
 existing_info <- get_existing_data_info()
 cat("Found", nrow(existing_info), "existing data files\n")

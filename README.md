@@ -23,9 +23,9 @@ Recolecta y visualiza automáticamente los datos de precios de la canasta básic
 - **Registros**: 12,084 observaciones
 - **Bienes**: 53 artículos únicos (limpios y estandarizados)
 - **Categorías**: 3 grupos oficiales (Alimentos, Usos del Hogar, Vestuario)
-- **Costo actual**: C$ 21,788 (+1.5% vs mes anterior)
+- **Costo actual**: C$ 21,788 (+1.5% vs Jul 2026)
 
-**Actualización automática**: Este repositorio se actualiza automáticamente cada semana (los lunes) mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. Cuando hay un mes nuevo, se recompila el dataset, se regeneran las figuras y se redespliega la aplicación Shiny.
+**Actualización automática**: Este repositorio se actualiza automáticamente cada mes (el día 20) mediante GitHub Actions, descargando los datos más recientes del sitio web oficial del INIDE. Cuando hay un mes nuevo, se recompila el dataset, se regeneran las figuras y se redespliega la aplicación Shiny.
 
 ## Vista de los datos
 
@@ -184,10 +184,10 @@ import delimited "https://raw.githubusercontent.com/RRMaximiliano/inide-canasta-
 
 ## Cómo funciona
 
-1. **Automatización semanal**: GitHub Actions se ejecuta cada lunes
+1. **Automatización mensual**: GitHub Actions se ejecuta el día 20 de cada mes
 2. **Detección inteligente**: Solo descarga datos nuevos del sitio web del INIDE
 3. **Compilación**: Estandariza nombres, asigna categorías y calcula precios reales
-4. **Validación**: `scripts/validate_data.R` verifica la integridad antes de publicar
+4. **Validación**: `scripts/validate_data.R` verifica la integridad antes de publicar; si falta algún mes en la serie, se abre un issue automáticamente
 5. **Actualización de app**: La aplicación Shiny se redespliega con los datos más recientes
 
 ## Características principales
@@ -196,7 +196,7 @@ import delimited "https://raw.githubusercontent.com/RRMaximiliano/inide-canasta-
 - **Calidad de datos**: Nomenclatura consistente y validación automática en CI
 - **Precios reales**: Ajustados por inflación (IPC de Nicaragua)
 - **Categorías**: Cada bien clasificado en su grupo oficial
-- **Siempre actualizado**: Se actualiza semanalmente con los datos más recientes
+- **Siempre actualizado**: Se actualiza mensualmente con los datos más recientes
 - **Interactivo**: Aplicación web para exploración de datos
 - **Múltiples formatos**: Archivos RDS, CSV y Stata disponibles
 - **Código abierto**: Todo el código disponible en GitHub
